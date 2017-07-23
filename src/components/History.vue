@@ -16,9 +16,9 @@
         </v-text-field>
       </v-card-title>
 
-      <v-data-table v-if="user.text === 'Paula'"
+      <v-data-table
         :headers="historyHeaders"
-        :items="activitiesHistory"
+        :items="userActivitiesHistory(user.text)"
         :search="search">
 
         <template slot="items" scope="props" >
@@ -52,7 +52,7 @@ export default {
     return {
       search: '',
       pagination: {},
-      activitiesHistory: []
+      activitiesHistory: [],
     }
   },
   firebase: {
@@ -67,6 +67,13 @@ export default {
   methods: {
     removeActivity(activity) {
       this.$firebaseRefs.activitiesHistory.child(activity['.key']).remove()
+    },
+    userActivitiesHistory(username) {
+      let filtered = this.activitiesHistory.filter(function(activity) {
+        return activity.username == username
+        console.log(username)
+      })
+      return filtered
     }
   },
   computed: {
