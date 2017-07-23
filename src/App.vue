@@ -1,13 +1,5 @@
 <template>
   <div id="app">
-    <!-- <ul class="gymgame-nav">
-      <li class="gymgame-nav__item"><router-link to="/add">add</router-link></li>
-      <li class="gymgame-nav__item"><router-link to="/">navigation</router-link></li>
-      <li class="gymgame-nav__item"><router-link to="/standings">standings</router-link></li>
-      <li class="gymgame-nav__item"><router-link to="/history">history</router-link></li>
-      <li class="gymgame-nav__item"><router-link to="/budget">budget</router-link></li>
-      <li class="gymgame-nav__item"><router-link to="/additional-features">additional-features</router-link></li>
-    </ul> -->
     <v-app
       height="100vh"
       id="e3"
@@ -47,7 +39,7 @@
           </v-list-tile>
         </v-list>
       </v-navigation-drawer>
-      <v-toolbar fixed class="indigo darken-4" dark>
+      <v-toolbar fixed class="gray" dark>
         <v-toolbar-side-icon @click.native.stop="drawer = !drawer"></v-toolbar-side-icon>
         <v-toolbar-title>{{ $route.name }}</v-toolbar-title>
       </v-toolbar>

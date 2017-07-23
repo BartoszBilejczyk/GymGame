@@ -7,12 +7,12 @@ export default new Vuex.Store({
 
   state: {
     users: [
-      { name: 'Paula' },
-      { name: 'Bartek' }
+      { text: 'Paula' },
+      { text: 'Bartek' }
     ],
     activitiesOptions: [
-      { name: 'gym' },
-      { name: 'calorie count'}
+      { text: 'gym' },
+      { text: 'calorie count'}
     ]
   },
   mutations: {
