@@ -49,7 +49,7 @@
       </v-navigation-drawer>
       <v-toolbar fixed class="indigo darken-4" dark>
         <v-toolbar-side-icon @click.native.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <v-toolbar-title>Toolbar</v-toolbar-title>
+        <v-toolbar-title>{{ $route.name }}</v-toolbar-title>
       </v-toolbar>
       <main>
         <v-container fluid>

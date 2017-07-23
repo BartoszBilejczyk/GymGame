@@ -9,8 +9,6 @@
     </select>
     {{ selectedActivity }}
     <button type="button" name="button" @click="addActivity()">Add Activity</button>
-
-    <h1>UPDATE AND DELETE</h1>
     <!-- <div v-for="user of users">
       {{ user.name }}
 
@@ -43,11 +41,6 @@ export default {
       return this.$store.state.activitiesOptions
     }
   },
-  // computed: mapState({
-  //   users: state => state.users,
-  //   activitiesOptions: state => state.activitiesOptions,
-  //   activitiesHistory: state => state.activitiesHistory
-  // }),
   firebase: {
     activitiesHistory: {
       source: db.ref('activitiesHistory'),
