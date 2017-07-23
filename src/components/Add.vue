@@ -25,24 +25,29 @@
 <script>
 
 import {db} from '../firebase'
+// import {mapState} from 'vuex'
 
 export default {
   name: 'add',
   data () {
     return {
-      activitiesHistory: {},
       selectedActivity: '',
-      activitiesOptions: [
-        { name: 'gym' },
-        { name: 'calorie count'}
-      ],
-      users: [
-        { name: 'Paula' },
-        { name: 'Bartek' }
-      ],
       selectedUser: ''
     }
   },
+  computed: {
+    users() {
+      return this.$store.state.users
+    },
+    activitiesOptions() {
+      return this.$store.state.activitiesOptions
+    }
+  },
+  // computed: mapState({
+  //   users: state => state.users,
+  //   activitiesOptions: state => state.activitiesOptions,
+  //   activitiesHistory: state => state.activitiesHistory
+  // }),
   firebase: {
     activitiesHistory: {
       source: db.ref('activitiesHistory'),
