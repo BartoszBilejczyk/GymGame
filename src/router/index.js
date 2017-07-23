@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Dashboard from '@/components/Dashboard'
 import Add from '@/components/Add'
 import Standings from '@/components/Standings'
 import History from '@/components/History'
@@ -12,6 +13,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'Dashboard',
+      component: Dashboard
+    },
+    {
+      path: '/add',
       name: 'Add',
       component: Add
     },
