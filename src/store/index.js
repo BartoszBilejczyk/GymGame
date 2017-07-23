@@ -7,12 +7,26 @@ export default new Vuex.Store({
 
   state: {
     users: [
-      { text: 'Paula' },
-      { text: 'Bartek' }
+      { text: 'Paula', photo: 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-64.png' },
+      { text: 'Bartek', photo: 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/male-64.png' }
     ],
     activitiesOptions: [
-      { text: 'gym' },
-      { text: 'calorie count'}
+      { text: 'gym', points: '2'},
+      { text: 'calorie count', points: '2'}
+    ],
+    historyHeaders: [
+      {
+        text: 'Aktywność',
+        align: 'left',
+        sortable: false,
+        value: 'name'
+      },
+      { text: 'Punkty',
+        value: 'points'
+      },
+      { text: 'Data',
+        value: 'date'
+      },
     ]
   },
   mutations: {

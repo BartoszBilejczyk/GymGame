@@ -34,14 +34,7 @@
 
   </v-card>
 
-    <!-- <div v-for="user of users">
-      {{ user.name }}
 
-      <input
-        :value="user.username"
-        @keyup.enter="updateUsername(user, $event.target.value)">
-      <button type="button" name="button" @click="removeUser(user)">Remove User</button>
-    </div> -->
   </div>
 </template>
 
@@ -79,16 +72,10 @@ export default {
   methods: {
     addActivity() {
       // if (this.selectedUser && this.selectedActivity) {
-        this.$firebaseRefs.activitiesHistory.push({username: this.selectedUser, activity: this.selectedActivity, timestamp: Date()});
+        this.$firebaseRefs.activitiesHistory.push({username: this.selectedUser, activity: this.selectedActivity, timestamp: Date(), points: 2});
         this.selectedActivity = ''
         this.selectedUser = ''
       // }
-    },
-    updateUsername(user, newName) {
-      this.$firebaseRefs.activitiesHistory.child(user['.key']).child('name').set(newName);
-    },
-    removeUser(user) {
-      this.$firebaseRefs.activitiesHistory.child(user['.key']).remove()
     }
   },
   watch: {
