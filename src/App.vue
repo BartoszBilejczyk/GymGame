@@ -39,7 +39,7 @@
           </v-list-tile>
         </v-list>
       </v-navigation-drawer>
-      <v-toolbar fixed class="gray" dark>
+      <v-toolbar fixed class="white" light>
         <v-toolbar-side-icon @click.native.stop="drawer = !drawer"></v-toolbar-side-icon>
         <v-toolbar-title>{{ $route.name }}</v-toolbar-title>
       </v-toolbar>
@@ -76,5 +76,14 @@ export default {
   #app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  .card {
+    margin: 20px 10px;
+  }
+
+  main {
+    background: linear-gradient(135deg, #e3e5f2 0%, darken(#e3e5f2, 3) 100%);
+    height: 100vh;
   }
 </style>

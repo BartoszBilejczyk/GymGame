@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>
       <v-icon fa large class="green--text">plus-circle</v-icon>
-      <h1 class="gymgame-add__card-title">Add activity</h1>
+      <h1 class="gymgame-add__card-title">Dodaj aktywność</h1>
     </v-card-title>
     <v-card-text>
       <v-select
@@ -68,7 +68,7 @@ export default {
       source: db.ref('activitiesHistory'),
       // handle errors in console
       cancelCallback(err) {
-        console.error(err);
+        console.error(err)
       }
     }
   },
