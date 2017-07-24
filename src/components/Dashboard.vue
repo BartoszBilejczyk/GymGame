@@ -8,8 +8,8 @@
       <history />
     </v-flex>
     <v-flex xs12 md4 class="pa-4">
-      <add />
-      <standings />
+      <budget />
+      <additional-features />
     </v-flex>
   </v-layout>
 </template>
@@ -18,12 +18,17 @@
 import Add from './Add'
 import Standings from './Standings'
 import History from './History'
+import Budget from './Budget'
+import AdditionalFeatures from './AdditionalFeatures'
+
 export default {
   name: 'Dashboard',
   components: {
     Add,
     Standings,
-    History
+    History,
+    Budget,
+    AdditionalFeatures
   }
 }
 </script>

@@ -11,8 +11,8 @@ export default new Vuex.Store({
       { text: 'Bartek', photo: 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/male-64.png' }
     ],
     activitiesOptions: [
-      { text: 'gym', points: '2'},
-      { text: 'calorie count', points: '2'}
+      { text: 'gym', points: 2},
+      { text: 'calorie count', points: 1}
     ],
     historyHeaders: [
       {

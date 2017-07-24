@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <v-card v-for="user in users">
+    <v-card v-for="user in users" :key="user.text">
       <v-card-title>
         <v-list-tile-avatar>
           <img :src="user.photo" alt="">

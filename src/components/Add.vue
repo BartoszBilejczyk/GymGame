@@ -1,11 +1,10 @@
 <template>
   <v-card>
-    <v-toolbar class="green" dense>
-      <v-toolbar-title class="white--text" primary-title>
-        Add activity
-      </v-toolbar-title>
-    </v-toolbar>
-    <v-container>
+    <v-card-title>
+      <v-icon fa large class="green--text">plus-circle</v-icon>
+      <h1 class="gymgame-add__card-title">Add activity</h1>
+    </v-card-title>
+    <v-card-text>
       <v-select
         :items="users"
         v-model="selectedUser"
@@ -29,9 +28,7 @@
           <v-icon dark>cached</v-icon>
         </span>
       </v-btn>
-    </v-container>
-
-
+    </v-card-text>
   </v-card>
 
 
@@ -58,6 +55,12 @@ export default {
     },
     activitiesOptions() {
       return this.$store.state.activitiesOptions
+    },
+    selectedPoints() {
+      //using lodash _.filter method to find points for a selectedActivity
+      let filteredObject = this._.filter(this.activitiesOptions, {'text': this.selectedActivity});
+      let points = filteredObject[0].points
+      return points
     }
   },
   firebase: {
@@ -72,9 +75,10 @@ export default {
   methods: {
     addActivity() {
       // if (this.selectedUser && this.selectedActivity) {
-        this.$firebaseRefs.activitiesHistory.push({username: this.selectedUser, activity: this.selectedActivity, timestamp: Date(), points: 2});
-        this.selectedActivity = ''
-        this.selectedUser = ''
+        this.$firebaseRefs.activitiesHistory.push({username: this.selectedUser, activity: this.selectedActivity, timestamp: Date(), points: this.selectedPoints});
+        this.selectedActivity = null
+        this.selectedUser = null
+        this.selectedPoints = null
       // }
     }
   },
@@ -86,13 +90,22 @@ export default {
       setTimeout(() => (this[l] = false), 1000)
 
       this.loader = null
-    }
+    },
   },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='scss'>
+
+  .gymgame-add {
+    &__card-title {
+      font-size: 1.5rem;
+      margin: 0;
+      padding: 0 10px;
+    }
+  }
+
   .custom-loader {
     animation: loader 1s infinite;
     display: flex;

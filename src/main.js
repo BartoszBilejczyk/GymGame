@@ -6,7 +6,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Vuetify from 'vuetify'
 import VueFire from 'vuefire'
-import Firebase from 'firebase'
+import lodash from 'lodash'
+import VueLodash from 'vue-lodash/dist/vue-lodash.min'
+ import Firebase from 'firebase'
 import App from './App'
 import router from './router'
 import store from './store/index'
@@ -15,6 +17,7 @@ Vue.config.productionTip = false
 Vue.use(Vuex)
 Vue.use(Vuetify)
 Vue.use(VueFire)
+Vue.use(VueLodash, lodash)
 
 /* eslint-disable no-new */
 new Vue({
