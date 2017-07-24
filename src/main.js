@@ -7,6 +7,8 @@ import Vuex from 'vuex'
 import Vuetify from 'vuetify'
 import VueFire from 'vuefire'
 import lodash from 'lodash'
+import moment from 'moment'
+import 'moment/locale/pl'
 import VueLodash from 'vue-lodash/dist/vue-lodash.min'
  import Firebase from 'firebase'
 import App from './App'
@@ -18,6 +20,12 @@ Vue.use(Vuex)
 Vue.use(Vuetify)
 Vue.use(VueFire)
 Vue.use(VueLodash, lodash)
+
+Vue.filter('formatDate', function(value) {
+  if (value) {
+    return moment(String(value)).locale('pl').format('llll')
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({

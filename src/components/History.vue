@@ -24,7 +24,7 @@
         <template slot="items" scope="props" >
           <td>{{ props.item.activity }}</td>
           <td class="text-xs-right">{{ props.item.points }}</td>
-          <td class="text-xs-right">{{ props.item.timestamp }}</td>
+          <td class="text-xs-right">{{ props.item.timestamp | formatDate }}</td>
           <td class="text-xs-center">
             <v-icon @click="removeActivity(props.item)">delete</v-icon>
           </td>
@@ -62,16 +62,23 @@ export default {
       cancelCallback(err) {
         console.error(err);
       }
+    },
+    budget: {
+      source: db.ref('budget'),
+      // handle errors in console
+      cancelCallback(err) {
+        console.error(err);
+      }
     }
   },
   methods: {
     removeActivity(activity) {
       this.$firebaseRefs.activitiesHistory.child(activity['.key']).remove()
+      console.log(this.$firebaseRefs.activitiesHistory.child(activity['.key']))
     },
     userActivitiesHistory(username) {
       let filtered = this.activitiesHistory.filter(function(activity) {
         return activity.username == username
-        console.log(username)
       })
       return filtered
     }
