@@ -70,7 +70,6 @@ export default {
       let total = null
       let plus = null
       let minus = null
-      // let minus = null
       let userFilteredActivities =  this.activitiesHistory.filter(function(user) {
         return user.username === username
       })

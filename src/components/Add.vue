@@ -18,7 +18,7 @@
         item-value="text"
       ></v-select>
       <v-btn
-        @click="addActivity(); updateBudget()"
+        @click="addActivity()"
         @click.native="loader = 'loading4'"
         success
         :loading="loading4"
@@ -63,6 +63,8 @@ export default {
     budgetInflow() {
       if (this.selectedPoints < 0) {
         return this.selectedPoints / 10
+      } else {
+        return 0;
       }
     }
   },
@@ -75,7 +77,7 @@ export default {
       }
     },
     budget: {
-      source: db.ref('budget'),
+      source: db.ref('budget/-KpoY6GPb3z2A0rXYclq'),
       // handle errors in console
       cancelCallback(err) {
         console.error(err)
@@ -85,8 +87,7 @@ export default {
   methods: {
     addActivity(user) {
       if (this.selectedUser && this.selectedActivity) {
-        this.$firebaseRefs.activitiesHistory.push({username: this.selectedUser, activity: this.selectedActivity, timestamp: Date(), points: this.selectedPoints});
-        console.log(this.$firebaseRefs.activitiesHistory.child)
+        this.$firebaseRefs.activitiesHistory.push({username: this.selectedUser, activity: this.selectedActivity, timestamp: Date(), points: this.selectedPoints, budgetInflow: this.budgetInflow});
         this.selectedActivity = null
         this.selectedUser = null
       }
