@@ -10,11 +10,12 @@
           <v-progress-circular
             :size="200"
             :width="15"
-            :rotate="360"
-            :value="fetchBudgetData().total"
+            :rotate="-90"
+            :value="budget[2]['.value']"
+            v-model="budgetMax"
             class="green--text"
           >
-            {{ fetchBudgetData().total }}
+            {{ budget[2]['.value'] }}
           </v-progress-circular>
             <div v-for="(user, index) in users">
               <v-layout column align-center>
@@ -22,11 +23,12 @@
               <v-progress-circular
                 :size="100"
                 :width="15"
-                :rotate="360"
-                :value.literal="fetchBudgetData(user.text).inflow[index].value"
+                :rotate="-90"
+                v-model="budgetMax"
+                :value="budget[index]['.value']"
                 class="green--text"
               >
-                {{ fetchBudgetData(user.text).inflow[index].value }}
+                {{ budget[index]['.value'] }}
               </v-progress-circular>
             </v-layout>
           </div>
@@ -39,16 +41,15 @@
         <v-text-field
           name="input-2"
           label="Label Text"
-          value="Input text"
+          value="newBudget"
           class="input-group--focused"
           v-model="newBudget"
         ></v-text-field>
 
-        <div class="" v-for="budgetItem in budget">
-          <v-btn @click="updateBudget(budgetItem, newBudget)">
-            asdsad
+        <div class="">
+          <v-btn @click="updateBudget(newBudget)">
+            Zaktualizuj budżet
           </v-btn>
-          {{ budgetItem.budget }}
         </div>
       </v-card-text>
     </v-card>
@@ -63,7 +64,7 @@ export default {
   name: 'budget',
   data () {
     return {
-      newBudget: '',
+      newBudget: null,
     }
   },
   firebase: {
@@ -75,7 +76,7 @@ export default {
       }
     },
     budget: {
-      source: db.ref('budget/-KpoY6GPb3z2A0rXYclq'),
+      source: db.ref('budget'),
       // handle errors in console
       cancelCallback(err) {
         console.error(err)
@@ -83,46 +84,21 @@ export default {
     }
   },
   methods: {
-    updateBudget(budgetItem, newBudget) {
+    updateBudget(newBudget) {
       if (isNaN(this.newBudget) == false) {
-        this.$firebaseRefs.budget.child(budgetItem['.key']).child('budget').set(Number(newBudget))
+        this.$firebaseRefs.budget.child('total').set(Number(newBudget))
       } else {
         alert('Please provide a number')
       }
     },
-    fetchBudgetData(username) {
-      let total = null
-      let inflow = [
-        { value: 0 },
-        { value: 0 }
-      ]
-
-      total = this.budget[0].budget
-
-      // create a new array only with activities regarding a specific person
-      let userFilteredBudgetInflow = this.activitiesHistory.filter(function(user) {
-        return user.username === username
-      })
-      // count the money inflow from each person
-      userFilteredBudgetInflow.forEach((el, index) => {
-        if (userFilteredBudgetInflow[index].username === 'Paula') {
-          inflow[0].value += userFilteredBudgetInflow[index].budgetInflow
-        } else {
-          inflow[1].value += userFilteredBudgetInflow[index].budgetInflow
-        }
-      })
-      inflow[0].value = parseFloat(inflow[0].value)
-      inflow[1].value = parseFloat(inflow[1].value)
-
-      return {
-        total: total,
-        inflow: inflow
-      }
-    }
   },
   computed: {
     users() {
       return this.$store.state.users
+    },
+    budgetMax() {
+      // Sets max budget to 40PLN
+      return this.budget[2]['.value'] * 2.5
     }
   }
 }

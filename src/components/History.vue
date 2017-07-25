@@ -74,7 +74,12 @@ export default {
   methods: {
     removeActivity(activity) {
       this.$firebaseRefs.activitiesHistory.child(activity['.key']).remove()
-      console.log(this.$firebaseRefs.activitiesHistory.child(activity['.key']))
+      this.$firebaseRefs.budget.child('total').set(Number((this.budget[2]['.value'] - activity.budgetInflow ).toFixed(2)))
+      if (activity.username === 'Bartek') {
+        this.$firebaseRefs.budget.child('bartekTotal').set(Number((this.budget[0]['.value'] - activity.budgetInflow ).toFixed(2)))
+      } else {
+        this.$firebaseRefs.budget.child('paulaTotal').set(Number((this.budget[1]['.value'] - activity.budgetInflow ).toFixed(2)))
+      }
     },
     userActivitiesHistory(username) {
       let filtered = this.activitiesHistory.filter(function(activity) {

@@ -62,7 +62,7 @@ export default {
     },
     budgetInflow() {
       if (this.selectedPoints < 0) {
-        return this.selectedPoints / 10
+        return -this.selectedPoints / 10
       } else {
         return 0;
       }
@@ -77,7 +77,7 @@ export default {
       }
     },
     budget: {
-      source: db.ref('budget/-KpoY6GPb3z2A0rXYclq'),
+      source: db.ref('budget'),
       // handle errors in console
       cancelCallback(err) {
         console.error(err)
@@ -85,9 +85,17 @@ export default {
     }
   },
   methods: {
-    addActivity(user) {
+    addActivity(budgetItem) {
       if (this.selectedUser && this.selectedActivity) {
         this.$firebaseRefs.activitiesHistory.push({username: this.selectedUser, activity: this.selectedActivity, timestamp: Date(), points: this.selectedPoints, budgetInflow: this.budgetInflow});
+        if (this.budgetInflow > 0) {
+          this.$firebaseRefs.budget.child('total').set(Number((this.budget[2]['.value'] + this.budgetInflow).toFixed(2)))
+          if (this.selectedUser === 'Paula') {
+            this.$firebaseRefs.budget.child('paulaTotal').set(Number((this.budget[1]['.value'] + this.budgetInflow).toFixed(2)))
+          } else {
+            this.$firebaseRefs.budget.child('bartekTotal').set(Number((this.budget[0]['.value'] + this.budgetInflow).toFixed(2)))
+          }
+        }
         this.selectedActivity = null
         this.selectedUser = null
       }
