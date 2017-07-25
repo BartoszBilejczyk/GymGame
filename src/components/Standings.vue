@@ -21,7 +21,6 @@
                   :width="15"
                   :rotate="-90"
                   :value="points(user.text).total"
-                  class="green--text"
                 >
                   {{ points(user.text).total }}
                 </v-progress-circular>
@@ -67,9 +66,9 @@ export default {
   },
   methods: {
     points(username) {
-      let total = null
-      let plus = null
-      let minus = null
+      let total = 0
+      let plus = 0
+      let minus = 0
       let userFilteredActivities =  this.activitiesHistory.filter(function(user) {
         return user.username === username
       })

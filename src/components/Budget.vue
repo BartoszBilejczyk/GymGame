@@ -13,25 +13,27 @@
             :rotate="-90"
             :value="budget[2]['.value']"
             v-model="budgetMax"
-            class="green--text"
+            class="blue--text"
           >
             {{ budget[2]['.value'] }}
           </v-progress-circular>
+          <v-layout row justify-space-between>
             <div v-for="(user, index) in users">
               <v-layout column align-center>
               {{ user.text }}
-              <v-progress-circular
-                :size="100"
-                :width="15"
-                :rotate="-90"
-                v-model="budgetMax"
-                :value="budget[index]['.value']"
-                class="green--text"
-              >
-                {{ budget[index]['.value'] }}
-              </v-progress-circular>
-            </v-layout>
-          </div>
+                <v-progress-circular
+                  :size="100"
+                  :width="15"
+                  :rotate="-90"
+                  v-model="budgetMax"
+                  :value="budget[index]['.value']"
+                  class="blue--text"
+                >
+                  {{ budget[index]['.value'] }}
+                </v-progress-circular>
+              </v-layout>
+            </div>
+          </v-layout>
         </v-layout>
 
         <br><br><br>
