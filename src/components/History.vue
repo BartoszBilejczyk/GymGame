@@ -29,7 +29,6 @@
             <v-icon @click="removeActivity(props.item)">delete</v-icon>
           </td>
         </template>
-
       </v-data-table>
     </v-card>
   </div>

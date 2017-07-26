@@ -1,11 +1,19 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import {db} from '../firebase'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-
   state: {
+    navigation: [
+      { icon: 'dashboard', text: 'Dashboard', to: '/'},
+      { icon: 'poll', text: 'Standings', to: '/standings'},
+      { icon: 'history', text: 'History', to: '/history'},
+      // { divider: true },
+      { icon: 'attach_money', text: 'Budget', to: '/budget'},
+      { icon: 'star_border', text: 'Additional Features', to: '/additional-features'}
+    ],
     users: [
       { index: 1, text: 'Bartek', photo: 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/male-64.png' },
       { index: 2, text: 'Paula', photo: 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-64.png' },

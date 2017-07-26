@@ -19,7 +19,7 @@
                 <v-progress-circular
                   :size="200"
                   :width="15"
-                  :rotate="-90"
+                  :rotate="90"
                   :value="points(user.text).total"
                 >
                   {{ points(user.text).total }}
@@ -28,7 +28,7 @@
                   <v-progress-circular
                     :size="100"
                     :width="15"
-                    :rotate="-90"
+                    :rotate="90"
                     :value="points(user.text).plus"
                     class="green--text"
                   >
@@ -37,7 +37,7 @@
                   <v-progress-circular
                     :size="100"
                     :width="15"
-                    :rotate="-90"
+                    :rotate="90"
                     :value="points(user.text).minus"
                     class="red--text"
                   >

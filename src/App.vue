@@ -29,12 +29,12 @@
         </v-toolbar>
         <v-list class="pt-0" dense>
           <v-divider></v-divider>
-          <v-list-tile v-for="item in items" :key="item.text" :to="item.to">
+          <v-list-tile v-for="navigationItem in navigation" :key="navigationItem.text" :to="navigationItem.to">
               <v-list-tile-action>
-                <v-icon>{{ item.icon }}</v-icon>
+                <v-icon>{{ navigationItem.icon }}</v-icon>
               </v-list-tile-action>
               <v-list-tile-content>
-                <v-list-tile-title>{{ item.text }}</v-list-tile-title>
+                <v-list-tile-title>{{ navigationItem.text }}</v-list-tile-title>
               </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -43,9 +43,11 @@
         <v-toolbar-side-icon @click.native.stop="drawer = !drawer"></v-toolbar-side-icon>
         <v-toolbar-title>{{ $route.name }}</v-toolbar-title>
       </v-toolbar>
-      <main>
+      <main v-cloak>
         <v-container fluid>
-          <router-view></router-view>
+          <div>
+            <router-view></router-view>
+          </div>
         </v-container>
       </main>
     </v-app>
@@ -58,17 +60,14 @@ export default {
   name: 'app',
   data: () => ({
     drawer: true,
-    items: [
-      { icon: 'lightbulb_outline', text: 'Dashboard', to: '/'},
-      { icon: 'lightbulb_outline', text: 'Standings', to: '/standings'},
-      { icon: 'touch_app', text: 'History', to: '/history'},
-      // { divider: true },
-      { icon: 'archive', text: 'Budget', to: '/budget'},
-      { icon: 'delete', text: 'Additional Features', to: '/additional-features'}
-    ],
     mini: false,
     right: null
-  })
+  }),
+  computed: {
+    navigation() {
+      return this.$store.state.navigation
+    }
+  }
 }
 </script>
 
@@ -85,5 +84,18 @@ export default {
   main {
     background: linear-gradient(135deg, #e3e5f2 0%, darken(#e3e5f2, 3) 100%);
     height: 100vh;
+  }
+
+  .list--dense .list__tile:not(.list__tile--avatar) {
+    height: 60px;
+  }
+
+  .list__tile {
+    padding: 0 40px;
+    text-transform: uppercase;
+  }
+
+  .list__tile--avatar {
+    padding: 0 20px;
   }
 </style>

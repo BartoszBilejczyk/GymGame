@@ -4,10 +4,10 @@
       <add></add>
       <standings />
     </v-flex>
-    <v-flex xs12 md4 class="pa-4">
+    <v-flex xs12 md5 class="pa-4">
       <history />
     </v-flex>
-    <v-flex xs12 md4 class="pa-4">
+    <v-flex xs12 md3 class="pa-4">
       <budget />
       <additional-features />
     </v-flex>

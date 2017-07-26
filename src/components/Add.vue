@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
-      <v-icon fa large class="green--text">plus-circle</v-icon>
+      <v-icon large class="green--text">add</v-icon>
       <h1 class="gymgame-add__card-title">Dodaj aktywność</h1>
     </v-card-title>
     <v-card-text>
@@ -17,17 +17,20 @@
         label="Wybierz aktywność"
         item-value="text"
       ></v-select>
-      <v-btn
-        @click="addActivity()"
-        @click.native="loader = 'loading4'"
-        success
-        :loading="loading4"
-        class="text-xs-center">
-        Dodaj aktywność
-        <span slot="loader" class="custom-loader">
-          <v-icon dark>cached</v-icon>
-        </span>
-      </v-btn>
+      <div class="">
+        <v-btn
+          @click="addActivity()"
+          @click.native="loader = 'loading4'"
+          success
+          block
+          :loading="loading4"
+          class="text-xs-center">
+          Dodaj aktywność
+          <span slot="loader" class="custom-loader">
+            <v-icon dark>cached</v-icon>
+          </span>
+        </v-btn>
+      </div>
     </v-card-text>
   </v-card>
   </div>
@@ -36,6 +39,7 @@
 <script>
 
 import {db} from '../firebase'
+import moment from 'moment'
 
 export default {
   name: 'add',
@@ -87,7 +91,7 @@ export default {
   methods: {
     addActivity(budgetItem) {
       if (this.selectedUser && this.selectedActivity) {
-        this.$firebaseRefs.activitiesHistory.push({username: this.selectedUser, activity: this.selectedActivity, timestamp: Date(), points: this.selectedPoints, budgetInflow: this.budgetInflow});
+        this.$firebaseRefs.activitiesHistory.push({username: this.selectedUser, activity: this.selectedActivity, timestamp: moment().format(), points: this.selectedPoints, budgetInflow: this.budgetInflow});
         if (this.budgetInflow > 0) {
           this.$firebaseRefs.budget.child('total').set(Number((this.budget[2]['.value'] + this.budgetInflow).toFixed(2)))
           if (this.selectedUser === 'Paula') {
@@ -110,7 +114,7 @@ export default {
 
       this.loader = null
     },
-  },
+  }
 }
 </script>
 
