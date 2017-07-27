@@ -26,10 +26,19 @@
           <td class="text-xs-right">{{ props.item.points }}</td>
           <td class="text-xs-right">{{ props.item.timestamp | formatDate }}</td>
           <td class="text-xs-center">
-            <v-icon @click="removeActivity(props.item)">delete</v-icon>
+            <v-icon @click="removeActivity(props.item); snackbar = true">delete</v-icon>
           </td>
         </template>
       </v-data-table>
+      <v-snackbar
+        :timeout="timeout"
+        :bottom="y === 'bottom'"
+        :vertical="mode === 'vertical'"
+        v-model="snackbar"
+      >
+        {{ snackbarText }}
+        <v-btn flat class="white--text" @click.native="snackbar = false">Close</v-btn>
+      </v-snackbar>
     </v-card>
   </div>
 </template>
@@ -52,6 +61,10 @@ export default {
       search: '',
       pagination: {},
       activitiesHistory: [],
+      snackbar: false,
+      y: 'bottom',
+      timeout: 1500,
+      snackbarText: 'Usunięto aktywność'
     }
   },
   firebase: {
@@ -79,6 +92,10 @@ export default {
       } else {
         this.$firebaseRefs.budget.child('paulaTotal').set(Number((this.budget[1]['.value'] - activity.budgetInflow ).toFixed(2)))
       }
+
+      setTimeout( () => {
+        this.snackbar= true
+      }, 1000)
     },
     userActivitiesHistory(username) {
       let filtered = this.activitiesHistory.filter(function(activity) {

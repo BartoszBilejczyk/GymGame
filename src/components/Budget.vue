@@ -51,7 +51,6 @@
         <div class="">
           <v-btn
             @click="updateBudget(newBudget)"
-            @click.native="loader = 'loading4'"
             info
             block
             :loading="loading4"
@@ -59,12 +58,19 @@
             Zaktualizuj budżet
           </v-btn>
         </div>
-        <!-- {{ getPlusPoints()[1].history }} -->
-        <!-- {{ getPlusPoints()[0].dailyPoints }} -->
       </v-card-text>
       <div class="chart-container" style="width: 50vh; height: 50vh">
         <line-chart :chart-data="datacollection"></line-chart>
       </div>
+      <v-snackbar
+        :timeout="timeout"
+        :bottom="y === 'bottom'"
+        :vertical="mode === 'vertical'"
+        v-model="snackbar"
+      >
+        {{ snackbarText }}
+        <v-btn flat class="white--text" @click.native="snackbar = false">Close</v-btn>
+      </v-snackbar>
     </v-card>
 </template>
 
@@ -85,6 +91,10 @@ export default {
       show: false,
       loading4: false,
       newBudget: null,
+      snackbar: false,
+      y: 'bottom',
+      timeout: 1500,
+      snackbarText: 'Zaktualizowano budżet',
       history: [],
       datacollection: {
         labels: this.getLabels(),
@@ -158,6 +168,10 @@ export default {
     updateBudget(newBudget) {
       if (isNaN(this.newBudget) == false) {
         this.$firebaseRefs.budget.child('total').set(Number(newBudget))
+        this.loader = 'loading4';
+        setTimeout( () => {
+          this.snackbar= true
+        }, 1000)
       } else {
         alert('Please provide a number')
       }
@@ -212,9 +226,7 @@ export default {
     loader () {
       const l = this.loader
       this[l] = !this[l]
-
       setTimeout(() => (this[l] = false), 1000)
-
       this.loader = null
     }
   }

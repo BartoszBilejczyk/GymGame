@@ -20,7 +20,6 @@
       <div class="">
         <v-btn
           @click="addActivity()"
-          @click.native="loader = 'loading4'"
           success
           block
           :loading="loading4"
@@ -32,6 +31,15 @@
         </v-btn>
       </div>
     </v-card-text>
+    <v-snackbar
+      :timeout="timeout"
+      :bottom="y === 'bottom'"
+      :vertical="mode === 'vertical'"
+      v-model="snackbar"
+    >
+      {{ snackbarText }}
+      <v-btn flat class="white--text" @click.native="snackbar = false">Close</v-btn>
+    </v-snackbar>
   </v-card>
   </div>
 </template>
@@ -48,7 +56,11 @@ export default {
       selectedActivity: null,
       selectedUser: null,
       loader: null,
-      loading4: false
+      loading4: false,
+      snackbar: false,
+      y: 'bottom',
+      timeout: 1500,
+      snackbarText: 'Dodano aktywność'
     }
   },
   computed: {
@@ -102,6 +114,11 @@ export default {
         }
         this.selectedActivity = null
         this.selectedUser = null
+        this.loader = 'loading4'
+
+        setTimeout( () => {
+          this.snackbar= true
+        }, 1000)
       }
     }
   },
