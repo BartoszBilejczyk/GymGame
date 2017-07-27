@@ -33,7 +33,6 @@
       <v-snackbar
         :timeout="timeout"
         :bottom="y === 'bottom'"
-        :vertical="mode === 'vertical'"
         v-model="snackbar"
       >
         {{ snackbarText }}
@@ -92,15 +91,10 @@ export default {
       } else {
         this.$firebaseRefs.budget.child('paulaTotal').set(Number((this.budget[1]['.value'] - activity.budgetInflow ).toFixed(2)))
       }
-
-      setTimeout( () => {
-        this.snackbar= true
-      }, 1000)
+      setTimeout(() => {this.snackbar= true}, 1000)
     },
     userActivitiesHistory(username) {
-      let filtered = this.activitiesHistory.filter(function(activity) {
-        return activity.username == username
-      })
+      let filtered = this.activitiesHistory.filter((activity) => activity.username == username)
       return filtered
     }
   },

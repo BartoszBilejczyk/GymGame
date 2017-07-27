@@ -7,6 +7,7 @@
     >
       <v-navigation-drawer
         persistent
+        enable-resize-watcher="true"
         light
         absolute
         :mini-variant.sync="mini"
@@ -89,13 +90,13 @@ export default {
   .list--dense .list__tile:not(.list__tile--avatar) {
     height: 60px;
   }
-
-  .list__tile {
-    padding: 0 40px;
-    text-transform: uppercase;
-  }
-
-  .list__tile--avatar {
-    padding: 0 20px;
-  }
+  //
+  // .list__tile {
+  //   padding: 0 40px;
+  //   text-transform: uppercase;
+  // }
+  //
+  // .list__tile--avatar {
+  //   padding: 0 20px;
+  // }
 </style>

@@ -34,7 +34,6 @@
     <v-snackbar
       :timeout="timeout"
       :bottom="y === 'bottom'"
-      :vertical="mode === 'vertical'"
       v-model="snackbar"
     >
       {{ snackbarText }}
@@ -115,10 +114,7 @@ export default {
         this.selectedActivity = null
         this.selectedUser = null
         this.loader = 'loading4'
-
-        setTimeout( () => {
-          this.snackbar= true
-        }, 1000)
+        setTimeout(() => {this.snackbar= true}, 1000)
       }
     }
   },

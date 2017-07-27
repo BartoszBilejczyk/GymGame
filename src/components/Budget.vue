@@ -65,7 +65,6 @@
       <v-snackbar
         :timeout="timeout"
         :bottom="y === 'bottom'"
-        :vertical="mode === 'vertical'"
         v-model="snackbar"
       >
         {{ snackbarText }}
@@ -169,9 +168,7 @@ export default {
       if (isNaN(this.newBudget) == false) {
         this.$firebaseRefs.budget.child('total').set(Number(newBudget))
         this.loader = 'loading4';
-        setTimeout( () => {
-          this.snackbar= true
-        }, 1000)
+        setTimeout(() => {this.snackbar= true}, 1000)
       } else {
         alert('Please provide a number')
       }
@@ -189,13 +186,11 @@ export default {
       let points = [0, 0, 0, 0, 0, 0, 0]
       // let dailyPoints = [10]
       //this allows to retrieve data from Firebase as I cannot take it from Vuex and there is a problem with using data and computed because of context
-      ref.on("value", function(snapshot) {
+      ref.on("value", (snapshot) => {
         for(let prop in snapshot.val()) {
           history.push((snapshot.val()[prop]))
         }
-      }, function (error) {
-         console.log("Error: " + error.code)
-      });
+      }, (error) => { console.log("Error: " + error.code)});
 
       for(let i = 0; i < history.length; i++) {
         // a week, from 6 days ago

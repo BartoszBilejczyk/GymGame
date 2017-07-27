@@ -69,9 +69,7 @@ export default {
       let total = 0
       let plus = 0
       let minus = 0
-      let userFilteredActivities =  this.activitiesHistory.filter(function(user) {
-        return user.username === username
-      })
+      let userFilteredActivities =  this.activitiesHistory.filter((user) => user.username === username)
       userFilteredActivities.forEach((el, index) => {
         total += userFilteredActivities[index].points
         if (userFilteredActivities[index].points > 0) {
@@ -103,7 +101,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='scss'>
 
   .tabs__items {
