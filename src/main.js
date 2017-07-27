@@ -10,10 +10,11 @@ import lodash from 'lodash'
 import moment from 'moment'
 import 'moment/locale/pl'
 import VueLodash from 'vue-lodash/dist/vue-lodash.min'
- import Firebase from 'firebase'
+import Firebase from 'firebase'
 import App from './App'
 import router from './router'
 import store from './store/index'
+require('./stylus/main.styl')
 
 Vue.config.productionTip = false
 Vue.use(Vuex)

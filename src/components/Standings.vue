@@ -1,10 +1,10 @@
 <template>
   <v-card>
     <v-card-text>
-      <v-tabs id="standings" fixed light centered>
+      <v-tabs id="standings" light centered>
         <v-tabs-bar slot="activators" class="white">
           <v-tabs-slider class="primary"></v-tabs-slider>
-          <v-tabs-item v-for="user in users" :key="user.index" :href="'#standings-' + user.index" class="primary--text">
+          <v-tabs-item v-for="user in users" :key="user.index" :href="'#standings-' + user.index" class="gameGreenLight">
             {{ user.text }}
           </v-tabs-item>
         </v-tabs-bar>

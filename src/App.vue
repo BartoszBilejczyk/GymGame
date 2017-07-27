@@ -7,44 +7,23 @@
     >
       <v-navigation-drawer
         persistent
-        enable-resize-watcher="true"
+        enable-resize-watcher
         light
         absolute
-        :mini-variant.sync="mini"
+        :mini-variant.sync='mini'
         v-model="drawer"
         overflow
+        class="game-navigation"
       >
-        <v-toolbar flat class="transparent">
-          <v-list class="pa-0">
-            <v-list-tile avatar tag="div">
-              <v-list-tile-content>
-                <v-list-tile-title>GymGame</v-list-tile-title>
-              </v-list-tile-content>
-              <v-list-tile-action>
-                <v-btn icon @click.native.stop="mini = !mini">
-                  <v-icon>chevron_left</v-icon>
-                </v-btn>
+        <v-list class="game-navigation-list">
+          <v-list-tile v-for="navigationItem in navigation" :key="navigationItem.text" :to="navigationItem.to" class="game-navigation-list__item">
+              <v-list-tile-action class="game-navigation-list__item-action">
+                <v-icon dark class="game-navigation-list__item-icon whiteish--text">{{ navigationItem.icon }}</v-icon>
               </v-list-tile-action>
-            </v-list-tile>
-          </v-list>
-        </v-toolbar>
-        <v-list class="pt-0" dense>
-          <v-divider></v-divider>
-          <v-list-tile v-for="navigationItem in navigation" :key="navigationItem.text" :to="navigationItem.to">
-              <v-list-tile-action>
-                <v-icon>{{ navigationItem.icon }}</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>{{ navigationItem.text }}</v-list-tile-title>
-              </v-list-tile-content>
           </v-list-tile>
         </v-list>
       </v-navigation-drawer>
-      <v-toolbar fixed class="white" light>
-        <v-toolbar-side-icon @click.native.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <v-toolbar-title>{{ $route.name }}</v-toolbar-title>
-      </v-toolbar>
-      <main v-cloak>
+      <main v-cloak class="game-main">
         <v-container fluid>
           <div>
             <router-view></router-view>
@@ -61,8 +40,8 @@ export default {
   name: 'app',
   data: () => ({
     drawer: true,
-    mini: false,
-    right: null
+    right: null,
+    mini: true
   }),
   computed: {
     navigation() {
@@ -82,14 +61,61 @@ export default {
     margin: 20px 10px;
   }
 
-  main {
-    background: linear-gradient(135deg, #e3e5f2 0%, darken(#e3e5f2, 3) 100%);
-    height: 100vh;
+  .navigation-drawer--mini-variant:not(.navigation-drawer--close) ~ main {
+    padding-left: 120px !important;
   }
 
-  .list--dense .list__tile:not(.list__tile--avatar) {
-    height: 60px;
+  .game {
+    &-main {
+      background: rgba(0, 0, 0, 0.06);
+      height: 100vh;
+    }
+    &-navigation {
+      margin-top: 0;
+      max-height: 100vh;
+      width: 120px;
+
+      &-list {
+        height: 100vh;
+        padding: 0;
+        background: linear-gradient(to bottom, #2f96ea 0%,#30c8ca 100%) !important;
+        &__item {
+          a {
+            display: flex;
+            justify-content: center;
+            height: 80px;
+          }
+
+          a.list__tile:hover {
+            background: transparent;
+          }
+
+          a.list__tile--active {
+            background: linear-gradient(45deg, #57a9ec 0%, #56a6ef 100%) !important;
+            .icon {
+              color: white !important
+            }
+          }
+
+          &-action {
+            justify-content: center;
+          }
+
+          &-icon {
+            font-size: 40px;
+            color: white;
+          }
+        }
+      }
+    }
   }
+
+
+
+  //
+  // .list--dense .list__tile:not(.list__tile--avatar) {
+  //   height: 60px;
+  // }
   //
   // .list__tile {
   //   padding: 0 40px;
