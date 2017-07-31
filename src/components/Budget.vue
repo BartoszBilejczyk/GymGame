@@ -13,7 +13,8 @@
             :rotate="90"
             :value="budget[2]['.value']"
             v-model="totalBudgetMax"
-            class="blue--text"
+            class="blue--text
+                   game__progress-circle"
           >
             {{ budget[2]['.value'] }}
           </v-progress-circular>
@@ -27,7 +28,9 @@
                   :rotate="90"
                   v-model="bartekBudgetMax"
                   :value="budget[index]['.value']"
-                  class="blue--text"
+                  class="secondary--text
+                         game__progress-circle
+                         game__progress-circle--small"
                 >
                   {{ budget[index]['.value'] }}
                 </v-progress-circular>

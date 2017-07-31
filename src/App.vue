@@ -24,11 +24,9 @@
         </v-list>
       </v-navigation-drawer>
       <main v-cloak class="game-main">
-        <v-container fluid>
-          <div>
-            <router-view></router-view>
-          </div>
-        </v-container>
+        <div>
+          <router-view></router-view>
+        </div>
       </main>
     </v-app>
   </div>
@@ -61,7 +59,7 @@ export default {
     margin: 20px 10px;
   }
 
-  .navigation-drawer--mini-variant:not(.navigation-drawer--close) ~ main {
+  .navigation-drawer--mini-variant:not(.navigation-drawer--close) ~ main, .navigation-drawer--persistent:not(.navigation-drawer--is-mobile).navigation-drawer--open:not(.navigation-drawer--right) ~ main {
     padding-left: 120px !important;
   }
 
@@ -69,6 +67,8 @@ export default {
     &-main {
       background: rgba(0, 0, 0, 0.06);
       height: 100vh;
+      max-width: calc(100vw - 120px);
+      padding: 0;
     }
     &-navigation {
       margin-top: 0;

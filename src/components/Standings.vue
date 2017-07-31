@@ -4,7 +4,7 @@
       <v-tabs id="standings" light centered>
         <v-tabs-bar slot="activators" class="white">
           <v-tabs-slider class="primary"></v-tabs-slider>
-          <v-tabs-item v-for="user in users" :key="user.index" :href="'#standings-' + user.index" class="gameGreenLight">
+          <v-tabs-item v-for="user in users" :key="user.index" :href="'#standings-' + user.index">
             {{ user.text }}
           </v-tabs-item>
         </v-tabs-bar>
@@ -17,6 +17,8 @@
             <v-card-text>
               <v-layout column align-center>
                 <v-progress-circular
+                  class="secondary--text
+                         game__progress-circle"
                   :size="200"
                   :width="15"
                   :rotate="90"
@@ -26,20 +28,24 @@
                 </v-progress-circular>
                 <v-layout row align-center>
                   <v-progress-circular
+                    class="gameGreenMain--text
+                           game__progress-circle
+                           game__progress-circle--small"
                     :size="100"
                     :width="15"
                     :rotate="90"
                     :value="points(user.text).plus"
-                    class="green--text"
                   >
                     {{ points(user.text).plus }}
                   </v-progress-circular>
                   <v-progress-circular
+                    class="red--text
+                           game__progress-circle
+                           game__progress-circle--small"
                     :size="100"
                     :width="15"
                     :rotate="90"
                     :value="points(user.text).minus"
-                    class="red--text"
                   >
                     {{ points(user.text).minus }}
                   </v-progress-circular>
@@ -107,8 +113,15 @@ export default {
     border-color: white;
   }
 
-  .progress-circular {
-    margin: 10px;
+  .game {
+    &__progress-circle {
+      margin: 10px;
+      font-size: 40px;
+      font-weight: 600;
+      &--small {
+        font-size: 20px;
+      }
+    }
   }
 
 </style>

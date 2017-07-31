@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {db} from '../firebase'
-
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -10,7 +8,6 @@ export default new Vuex.Store({
       { icon: 'dashboard', text: 'Dashboard', to: '/'},
       { icon: 'poll', text: 'Standings', to: '/standings'},
       { icon: 'history', text: 'History', to: '/history'},
-      // { divider: true },
       { icon: 'attach_money', text: 'Budget', to: '/budget'},
       { icon: 'star_border', text: 'Additional Features', to: '/additional-features'}
     ],

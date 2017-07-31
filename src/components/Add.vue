@@ -1,45 +1,40 @@
 <template>
-  <v-card>
-    <v-card-title>
-      <v-icon large class="green--text">add</v-icon>
-      <h1 class="gymgame-add__card-title">Dodaj aktywność</h1>
-    </v-card-title>
-    <v-card-text>
-      <v-select
-        :items="users"
-        v-model="selectedUser"
-        label="Wybierz osobę"
-        item-value="text"
-      ></v-select>
-      <v-select
-        :items="activitiesOptions"
-        v-model="selectedActivity"
-        label="Wybierz aktywność"
-        item-value="text"
-      ></v-select>
-      <div class="">
-        <v-btn
-          @click="addActivity()"
-          success
-          block
-          :loading="loading4"
-          class="text-xs-center">
-          Dodaj aktywność
-          <span slot="loader" class="custom-loader">
-            <v-icon dark>cached</v-icon>
-          </span>
-        </v-btn>
-      </div>
-    </v-card-text>
-    <v-snackbar
-      :timeout="timeout"
-      :bottom="y === 'bottom'"
-      v-model="snackbar"
-    >
-      {{ snackbarText }}
-      <v-btn flat class="white--text" @click.native="snackbar = false">Close</v-btn>
-    </v-snackbar>
-  </v-card>
+  <div class="">
+    <v-icon large class="green--text">add</v-icon>
+    <h1 class="gymgame-add__card-title">Dodaj aktywność</h1>
+    <v-select
+      :items="users"
+      v-model="selectedUser"
+      label="Wybierz osobę"
+      item-value="text"
+    ></v-select>
+    <v-select
+      :items="activitiesOptions"
+      v-model="selectedActivity"
+      label="Wybierz aktywność"
+      item-value="text"
+    ></v-select>
+    <div class="">
+      <v-btn
+        @click="addActivity()"
+        success
+        block
+        :loading="loading4"
+        class="text-xs-center">
+        Dodaj aktywność
+        <span slot="loader" class="custom-loader">
+          <v-icon dark>cached</v-icon>
+        </span>
+      </v-btn>
+    </div>
+  <v-snackbar
+    :timeout="timeout"
+    :bottom="y"
+    v-model="snackbar"
+  >
+    {{ snackbarText }}
+    <v-btn flat class="white--text" @click.native="snackbar = false">Zamknij</v-btn>
+  </v-snackbar>
   </div>
 </template>
 
