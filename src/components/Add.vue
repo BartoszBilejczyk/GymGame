@@ -95,7 +95,7 @@ export default {
     }
   },
   methods: {
-    addActivity(budgetItem) {
+    addActivity() {
       if (this.selectedUser && this.selectedActivity) {
         this.$firebaseRefs.activitiesHistory.push({username: this.selectedUser, activity: this.selectedActivity, timestamp: moment().format(), points: this.selectedPoints, budgetInflow: this.budgetInflow});
         if (this.budgetInflow > 0) {
@@ -119,9 +119,8 @@ export default {
       this[l] = !this[l]
 
       setTimeout(() => (this[l] = false), 1000)
-
       this.loader = null
-    },
+    }
   }
 }
 </script>

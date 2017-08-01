@@ -6,6 +6,7 @@ import Standings from '@/components/Standings'
 import History from '@/components/History'
 import Budget from '@/components/Budget'
 import AdditionalFeatures from '@/components/AdditionalFeatures'
+import Auth from '@/components/Auth'
 
 Vue.use(Router)
 
@@ -13,8 +14,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Dashboard',
-      component: Dashboard
+      name: 'Auth',
+      component: Auth
     },
     {
       path: '/add',
