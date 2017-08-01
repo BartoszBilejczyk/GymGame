@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-app
+    <!-- <v-app
       height="100vh"
       id="e3"
       standalone
@@ -24,11 +24,11 @@
         </v-list>
       </v-navigation-drawer>
       <main v-cloak class="game-main">
-        <div>
+        <div> -->
           <router-view></router-view>
-        </div>
+        <!-- </div>
       </main>
-    </v-app>
+    </v-app> -->
   </div>
 </template>
 

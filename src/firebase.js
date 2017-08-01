@@ -10,7 +10,7 @@ import Firebase from 'firebase'
 // messagingSenderId: "1087497234674"
 
 
-const firebaseApp = Firebase.initializeApp({
+export const firebaseApp = Firebase.initializeApp({
   apiKey: "AIzaSyDRz0FIYdYna0R-SfAaNvrNhNfsz2h5z70",
   authDomain: "gymgame-6ed97.firebaseapp.com",
   databaseURL: "https://gymgame-6ed97.firebaseio.com",

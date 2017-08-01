@@ -14,7 +14,7 @@ import Firebase from 'firebase'
 import App from './App'
 import router from './router'
 import store from './store/index'
-require('./stylus/main.styl')
+// require('./stylus/main.styl')
 
 Vue.config.productionTip = false
 Vue.use(Vuex)
