@@ -42,6 +42,6 @@ export default new Router({
       path: '/additional-features',
       name: 'AdditionalFeatures',
       component: AdditionalFeatures
-    },
+    }
   ]
 })

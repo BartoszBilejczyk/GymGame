@@ -6,18 +6,18 @@
       standalone
     >
 
-    <div v-if="user">
-      <navigation />
-      <main v-cloak class="game-main">
-        <div>
-          <router-view></router-view>
-        </div>
-      </main>
-    </div>
+      <div v-if="user">
+        <navigation />
+        <main v-cloak class="game-main">
+          <div> -->
+            <router-view></router-view>
+          <!-- </div>
+        </main>
+      </div>
 
-    <div v-else>
-      <auth />
-    </div>
+      <div v-else>
+        <auth />
+      </div>
 
     </v-app>
   </div>
