@@ -35,6 +35,10 @@
     {{ snackbarText }}
     <v-btn flat class="white--text" @click.native="snackbar = false">Zamknij</v-btn>
   </v-snackbar>
+
+  {{ user }}
+
+  <img :src="user.photoURL" alt="">
   </div>
 </template>
 
@@ -42,6 +46,7 @@
 
 import {db} from '../firebase'
 import moment from 'moment'
+import firebase from 'firebase'
 
 export default {
   name: 'add',
@@ -54,7 +59,8 @@ export default {
       snackbar: false,
       y: 'bottom',
       timeout: 1500,
-      snackbarText: 'Dodano aktywność'
+      snackbarText: 'Dodano aktywność',
+      user: firebase.auth().currentUser
     }
   },
   computed: {

@@ -81,6 +81,7 @@
 import {db} from '../firebase'
 import moment from 'moment'
 import LineChart from '../charts/chart1'
+import firebase from 'firebase'
 
 export default {
   name: 'budget',
@@ -89,6 +90,7 @@ export default {
   },
   data () {
     return {
+      user: firebase.auth().currentUser,
       loader: null,
       show: false,
       loading4: false,

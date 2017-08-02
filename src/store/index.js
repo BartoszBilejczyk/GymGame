@@ -4,6 +4,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    loggedUser: null,
     navigation: [
       { icon: 'dashboard', text: 'Dashboard', to: '/'},
       { icon: 'poll', text: 'Standings', to: '/standings'},
@@ -61,6 +62,12 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
+    logUser(state, payload) {
+      state.loggedUser = payload
+    },
+    logoutUser(state, payload) {
+      state.loggedUser = payload
+    }
     // addItem (state, payload) {
     //   let found = false
     //
@@ -84,6 +91,14 @@ export default new Vuex.Store({
     // }
   },
   actions: {
+    logUser({commit}, payload) {
+      commit('logUser', payload);
+      console.log('user logged in vuex')
+    },
+    logoutUser({commit}, payload) {
+      commit('logUser', payload);
+      console.log('user log out from vuex')
+    }
     // addItem ({commit}, payload) {
     //   commit('addItem', payload)
     //   console.log('Added')

@@ -1,12 +1,13 @@
 <template lang="html">
   <div class="">
-    test
-    <v-text-field name="login" label="Login" type="text" v-model="login"></v-text-field>
+    <v-text-field name="email" label="Login" type="text" v-model="email"></v-text-field>
     <v-text-field name="password" label="Password" type="text" v-model="password"></v-text-field>
-    <v-btn @click="logIn()">login</v-btn>
-    <v-btn @click="signUp()">signin</v-btn>
-    <v-btn @click="signOut()">singout</v-btn>
-    <v-btn @click="signInWithGoogle()">login google</v-btn>
+    <v-btn @click="signUp()">Sign Up</v-btn>
+    <v-btn @click="signIn()">Sign in</v-btn>
+    <v-btn @click="signOut()">Sign Out</v-btn>
+    <v-btn @click="signInWithGoogle()">Sign In Google</v-btn>
+    <br>
+    {{ user }}
   </div>
 </template>
 
@@ -19,7 +20,7 @@ export default {
   data() {
     return {
       user: null,
-      login: '',
+      email: '',
       password: ''
     }
   },
@@ -33,25 +34,37 @@ export default {
     })
   },
   methods: {
-    // signUp() {
-    //   auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
-    //     // Handle Errors here.
-    //     let errorCode = error.code;
-    //     let errorMessage = error.message;
-    //     // ...
-    //   });
-    // },
-
-    signInWithGoogle: function() {
-      const provider = new firebase.auth.GoogleAuthProvider()
-      auth.signInWithRedirect(provider).then((result) => {
-        this.user = result.user
-      }).catch(err => console.log(error))
+    signUp() {
+      firebase.auth().createUserWithEmailAndPassword(this.email, this.password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
     },
-    signOut: function() {
-      auth.signOut().then(() => {
-        this.user = null
-      }).catch(err => console.log(error))
+    signIn() {
+      firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+      .then((result) => {
+        this.$store.dispatch('logUser', result)
+      })
+      .catch(function(error) {
+        console.log(error.code);
+        console.log(error.message);
+      });
+    },
+    signInWithGoogle() {
+      const provider = new firebase.auth.GoogleAuthProvider()
+      firebase.auth().signInWithRedirect(provider).then((result) => {
+        this.user = result.user
+      })
+      .catch(err => console.log(error))
+    },
+    signOut() {
+      firebase.auth().signOut()
+      this.$router.push('/')
+      // .then(() => {
+      //   this.user = null
+      // }).catch(err => console.log(error))
     },
   }
 }
