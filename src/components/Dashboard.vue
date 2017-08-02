@@ -1,7 +1,7 @@
 <template lang="html">
   <v-layout row wrap>
     <v-flex xs12 lg3 class="pa-4">
-      <add></add>
+      <add />
       <standings />
     </v-flex>
     <v-flex xs12 lg5 class="pa-4">

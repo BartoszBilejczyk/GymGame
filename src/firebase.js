@@ -19,4 +19,9 @@ export const firebaseApp = Firebase.initializeApp({
   messagingSenderId: "66802876396"
 })
 
-export const db = firebaseApp.database();
+const auth = firebaseApp.auth()
+const db = firebaseApp.database();
+export {
+  auth,
+  db
+}
