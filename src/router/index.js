@@ -15,8 +15,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'App',
-      component: App
+      name: 'Dashboard',
+      component: Dashboard
     },
     {
       path: '/add',
