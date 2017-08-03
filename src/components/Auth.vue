@@ -26,27 +26,40 @@
         ></v-text-field>
       </div>
       <v-btn
-        primary
-        dark
         block
         @click="signIn()"
-      >Sign in</v-btn>
+        class="game-authentication__signin-button"
+      >{{isSigningIn ? 'sign in' : 'sign up'}}</v-btn>
+
+      <div v-if="isSigningIn"
+           class="game-authentication-social-wrapper
+                  grey--text
+                  grey-lighten-4">
+        <span>Or sign in easily with</span>
+        <div class="game-authentication-social">
+          <v-card @click="signInWithGoogle()"
+                  class="game-authentication-social__item">
+            <img class="game-authentication-social__icon"
+                 src="../assets/google.svg"
+                 alt="Google">
+                 Sign in with Google
+          </v-card>
+          <v-card class="game-authentication-social__item">
+            <img class="game-authentication-social__icon"
+                 src="../assets/facebook.svg"
+                 alt="Facebook">
+                 Log in with Facebook
+          </v-card>
+        </div>
+      </div>
+      <p class=" game-authentication__signup
+                 grey--text
+                 grey-lighten-4">{{isSigningIn ? 'Don\'t have an account?' : 'Back to'}}
+        <a @click="signUp(); isSigningIn = !isSigningIn"
+           class=" white--text">{{isSigningIn ? 'Sign up' : 'Log In'}}</a>
+      </p>
     </div>
   </div>
-
-
-
-  <!--
-  <div class="">
-    <v-text-field name="email" label="Login" type="text" v-model="email"></v-text-field>
-    <v-text-field name="password" label="Password" type="text" v-model="password"></v-text-field>
-    <v-btn @click="signUp()">Sign Up</v-btn>
-    <v-btn @click="signIn()">Sign in</v-btn>
-    <v-btn @click="signOut()">Sign Out</v-btn>
-    <v-btn @click="signInWithGoogle()">Sign In Google</v-btn>
-    <br>
-    {{ user }}
-  </div> -->
 </template>
 
 <script>
@@ -59,7 +72,8 @@ export default {
     return {
       user: null,
       email: '',
-      password: ''
+      password: '',
+      isSigningIn: true
     }
   },
   beforeCreate: function() {
@@ -73,22 +87,24 @@ export default {
   },
   methods: {
     signUp() {
-      firebase.auth().createUserWithEmailAndPassword(this.email, this.password).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
-      });
+      firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+        .then((result) => {
+          this.$store.dispatch('logUser', result)
+        })
+        .catch(function(error) {
+          console.log(error.code);
+          console.log(error.message);
+        });
     },
     signIn() {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password)
-      .then((result) => {
-        this.$store.dispatch('logUser', result)
-      })
-      .catch(function(error) {
-        console.log(error.code);
-        console.log(error.message);
-      });
+        .then((result) => {
+          this.$store.dispatch('logUser', result)
+        })
+        .catch(function(error) {
+          console.log(error.code);
+          console.log(error.message);
+        });
     },
     signInWithGoogle() {
       const provider = new firebase.auth.GoogleAuthProvider()
@@ -110,6 +126,9 @@ export default {
 
 <style lang="scss">
 
+@import '../styles/palette.scss';
+@import '../styles/media_queries.scss';
+
 .game-authentication {
   &-wrapper {
     text-align: center;
@@ -117,11 +136,15 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(45deg, #3e3b4c 0%,#686675 100%);
+    background: linear-gradient(45deg, #3e3b4c 0%, #686675 100%);
+    position: relative;
   }
 
   &__logo {
-    height: 120px;
+    height: 50px;
+    @include sm-up {
+      height: 120px;
+    }
 
     &-wrapper {
       margin-bottom: 25px;
@@ -136,6 +159,72 @@ export default {
   &-textfields {
     margin-top: 40px;
   }
+
+  &__signin-button {
+    margin-bottom: 30px;
+  }
+
+  &__signup {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+  }
+
+  &-social {
+    &-wrapper {
+
+    }
+
+    &__item {
+      margin-top: 10px;
+      padding: 7px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      &:hover {
+        transition: 0.2s;
+        background-color: pal(white, light);
+      }
+    }
+
+    &__icon {
+      width: 20px;
+    }
+  }
+}
+
+
+/* OTHER STYLES */
+
+.input-group {
+  padding: 5px 0;
+}
+
+.input-group--text-field label {
+  top: 5px;
+}
+
+.input-group__details {
+  &:before {
+    top: 5px;
+  }
+  &:after {
+    background-color: pal(orange, dark);
+    top: 5px;
+    height: 1px;
+  }
+}
+
+.input-group--text-field.input-group--prepend-icon .input-group__details:after, .input-group--text-field.input-group--prepend-icon .input-group__details:before {
+  margin: 0;
+  max-width: 100%;
+}
+
+.input-group.input-group--focused .input-group__input .icon {
+  color: pal(orange, dark)
 }
 
 </style>
