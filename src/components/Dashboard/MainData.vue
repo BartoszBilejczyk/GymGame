@@ -24,10 +24,11 @@ export default {
 
 <style lang="scss">
 
-@import '../../styles/main.scss';
+@import '../../assets/styles/main.scss';
 
 .game-main-data {
   height: 100vh;
+  width: calc(80% - 380px);
   background: pal(white);
 }
 </style>

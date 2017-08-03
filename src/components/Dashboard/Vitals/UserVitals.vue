@@ -1,6 +1,8 @@
 <template lang="html">
-  <div class="div-vitals-user-wrapper">
-    User Vitals
+  <div class="game-vitals-user-data">
+    <div class="container">
+      User Vitals
+    </div>
   </div>
 </template>
 
@@ -11,10 +13,10 @@ export default {
 
 <style lang="scss">
 
-@import '../../../styles/main.scss';
+@import '../../../assets/styles/main.scss';
 
-.game-main-data {
-  height: 70vh;
-  background: pal(blue);
+.game-vitals-user-data {
+  height: calc(100vh - 380px);
+  background: linear-gradient(to bottom, pal(naval) 0%, pal(naval, light) 100%)
 }
 </style>

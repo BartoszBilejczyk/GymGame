@@ -52,7 +52,7 @@ export default {
 <style lang="scss">
 
   .navigation-drawer--mini-variant:not(.navigation-drawer--close) ~ main, .navigation-drawer--persistent:not(.navigation-drawer--is-mobile).navigation-drawer--open:not(.navigation-drawer--right) ~ main {
-    padding-left: 124px !important;
+    padding-left: 134px !important;
   }
 
   .game {
@@ -65,7 +65,7 @@ export default {
     &-navigation {
       margin-top: 0;
       max-height: 100vh;
-      width: 120px;
+      width: 130px;
 
       &-list {
         height: 100vh;
@@ -75,7 +75,7 @@ export default {
           a {
             display: flex;
             justify-content: center;
-            height: 80px;
+            height: 110px;
           }
 
           a.list__tile:hover {

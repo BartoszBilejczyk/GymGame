@@ -6,7 +6,7 @@
         <img class="game-authentication__logo" src="../assets/dumbbell.svg" alt="dumbbell">
         <img class="game-authentication__logo" src="../assets/fresh-juice.svg" alt="juice">
       </div>
-      <h6 class="game-authentication__title white--text">GYM GAME</h6>
+      <h1 class="game-authentication__title white--text">GYM GAME</h1>
       <div class="game-authentication-textfields">
         <v-text-field
           name="input-1-3"
@@ -126,7 +126,7 @@ export default {
 
 <style lang="scss">
 
-@import '../styles/main.scss';
+@import '../assets/styles/main.scss';
 
 .game-authentication {
   &-wrapper {
@@ -150,9 +150,12 @@ export default {
     }
   }
 
-  &__name {
-    font-size: 25px;
-    font-weight: 300;
+  &__title {
+    @include font(30, 200);
+
+    @include sm-up {
+      @include font(30, 200)
+    }
   }
 
   &-textfields {
@@ -171,7 +174,7 @@ export default {
     width: 100%;
 
     @include sm-up {
-      position: initial;
+      position: relative;
       margin-top: 20px;
       bottom: 0;
     }

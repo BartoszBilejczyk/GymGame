@@ -1,17 +1,9 @@
 <template lang="html">
   <div class="v-container-fluid">
     <v-layout row wrap>
-      <v-flex xs2>
-        <vitals :activeUser="activeUser"></vitals>
-      </v-flex>
-
-      <v-flex xs8>
-        <main-data :activeUser="activeUser"></main-data>
-      </v-flex>
-
-      <v-flex xs2>
-        <activity :activeUser="activeUser"></activity>
-      </v-flex>
+      <vitals :activeUser="activeUser"></vitals>
+      <main-data :activeUser="activeUser"></main-data>
+      <activity :activeUser="activeUser"></activity>
     </v-layout>
   </div>
 </template>
@@ -35,7 +27,7 @@ export default {
 
 <style lang="scss">
 
-@import '../styles/main.scss';
+@import '../assets/styles/main.scss';
 
 
 /* OTHER STYLES */

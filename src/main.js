@@ -14,7 +14,6 @@ import Firebase from 'firebase'
 import App from './App'
 import router from './router'
 import store from './store/index'
-import './styles/main.scss'
 // require('./stylus/main.styl')
 
 Vue.config.productionTip = false

@@ -21,10 +21,11 @@ export default {
 
 <style lang="scss">
 
-@import '../../styles/main.scss';
+@import '../../assets/styles/main.scss';
 
 .game-vitals {
   height: 100vh;
+  width: 380px;
   background: pal(gray);
 }
 </style>

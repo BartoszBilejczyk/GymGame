@@ -1,6 +1,8 @@
 <template lang="html">
   <div class="game-main-data-recipes">
-    <recipes-item></recipes-item>
+    <div class="container">
+      <recipes-item></recipes-item>
+    </div>
   </div>
 </template>
 
@@ -17,10 +19,10 @@ export default {
 
 <style lang="scss">
 
-@import '../../../styles/main.scss';
+@import '../../../assets/styles/main.scss';
 
 .game-main-data-recipes {
-  height: 30vh;
+  height: calc(50vh - 190px);
   background: pal(white, 'light-dark');
 }
 </style>
