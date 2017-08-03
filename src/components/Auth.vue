@@ -126,8 +126,7 @@ export default {
 
 <style lang="scss">
 
-@import '../styles/palette.scss';
-@import '../styles/media_queries.scss';
+@import '../styles/main.scss';
 
 .game-authentication {
   &-wrapper {
@@ -170,6 +169,12 @@ export default {
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
+
+    @include sm-up {
+      position: initial;
+      margin-top: 20px;
+      bottom: 0;
+    }
   }
 
   &-social {

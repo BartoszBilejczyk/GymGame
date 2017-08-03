@@ -10,7 +10,7 @@
         <navigation />
         <main v-cloak class="game-main">
           <div>
-            <router-view></router-view>
+            <router-view :activeUser="user"></router-view>
           </div>
         </main>
       </div>

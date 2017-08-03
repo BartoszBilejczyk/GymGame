@@ -52,7 +52,7 @@ export default {
 <style lang="scss">
 
   .navigation-drawer--mini-variant:not(.navigation-drawer--close) ~ main, .navigation-drawer--persistent:not(.navigation-drawer--is-mobile).navigation-drawer--open:not(.navigation-drawer--right) ~ main {
-    padding-left: 120px !important;
+    padding-left: 124px !important;
   }
 
   .game {

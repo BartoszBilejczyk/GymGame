@@ -1,37 +1,46 @@
 <template lang="html">
-  <v-layout row wrap>
-    <v-flex xs12 lg3 class="pa-4">
-      <add />
-      <standings />
-    </v-flex>
-    <v-flex xs12 lg5 class="pa-4">
-      <history />
-    </v-flex>
-    <v-flex xs12 lg4 class="pa-4">
-      <budget />
-      <additional-features />
-    </v-flex>
-  </v-layout>
+  <div class="v-container-fluid">
+    <v-layout row wrap>
+      <v-flex xs2>
+        <vitals :activeUser="activeUser"></vitals>
+      </v-flex>
+
+      <v-flex xs8>
+        <main-data :activeUser="activeUser"></main-data>
+      </v-flex>
+
+      <v-flex xs2>
+        <activity :activeUser="activeUser"></activity>
+      </v-flex>
+    </v-layout>
+  </div>
 </template>
 
 <script>
-import Add from './Add'
-import Standings from './Standings'
-import History from './History'
-import Budget from './Budget'
-import AdditionalFeatures from './AdditionalFeatures'
+
+import Vitals from './Dashboard/Vitals'
+import MainData from './Dashboard/MainData'
+import Activity from './Dashboard/Activity'
 
 export default {
   name: 'Dashboard',
+  props: ['activeUser'],
   components: {
-    Add,
-    Standings,
-    History,
-    Budget,
-    AdditionalFeatures
+    Vitals,
+    MainData,
+    Activity
   }
 }
 </script>
 
 <style lang="scss">
+
+@import '../styles/main.scss';
+
+
+/* OTHER STYLES */
+
+.layout .flex {
+  padding: 0;
+}
 </style>
