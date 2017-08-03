@@ -9,9 +9,9 @@
       <div v-if="user">
         <navigation />
         <main v-cloak class="game-main">
-          <div> -->
+          <div>
             <router-view></router-view>
-          <!-- </div>
+          </div>
         </main>
       </div>
 
@@ -46,10 +46,6 @@ export default {
   #app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-
-  .card {
-    margin: 20px 10px;
   }
 
   //
