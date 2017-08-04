@@ -7,10 +7,10 @@ export default new Vuex.Store({
     loggedUser: null,
     navigation: [
       { icon: 'dashboard', text: 'Dashboard', to: '/'},
-      { icon: 'poll', text: 'Standings', to: '/standings'},
-      { icon: 'history', text: 'History', to: '/history'},
-      { icon: 'attach_money', text: 'Budget', to: '/budget'},
-      { icon: 'star_border', text: 'Additional Features', to: '/additional-features'}
+      { icon: 'poll', text: 'Activity', to: '/standings'},
+      { icon: 'history', text: 'Leaderboard', to: '/history'},
+      { icon: 'attach_money', text: 'Achievements', to: '/budget'},
+      { icon: 'star_border', text: 'Recipes', to: '/additional-features'}
     ],
     users: [
       { index: 1, text: 'Bartek', photo: 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/male-64.png' },

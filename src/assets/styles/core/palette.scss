@@ -13,29 +13,6 @@ $palette-colors: (
     dark: #202020,
     x-dark: #191919
   ),
-  blue: (
-    light: #30c8ca,
-    dark: #2f96ea
-  ),
-  green: (
-    base: #02d7a5
-  ),
-  orange: (
-    light: #feb96b,
-    dark: #fe844f
-  ),
-  pink: (
-    light: #fd81bf,
-    dark: #c659ff
-  ),
-  purple: (
-    light: #dedffc,
-    base: #5e1fe4,
-    light-dark: #302152,
-    mid-dark: #2f1d41,
-    dark: #171220,
-    x-dark: #0e0b14
-  ),
   white: (
     x-light: #e7e7ec,
     light: #f6f6f6,
@@ -46,9 +23,37 @@ $palette-colors: (
     x-dark: #e2e4ee,
     logos: #f1f1f4
   ),
-  naval: (
-    base: #35637f,
-    light: #3b656e
+  blue: (
+    x-light: #1786b3,
+    light: #1979ab,
+    light-dark: #1b6ca4,
+    base: #22629e,
+    mid-dark: #1e5094,
+    dark: #24478f,
+    x-dark: #263b8a
+  ),
+  navy: (
+    light: #081351,
+    base: #060a34,
+    dark: #040629
+  ),
+  pink: (
+    light: #e0358e,
+    base: #bf2e8c,
+    dark: #8c2b8a
+  ),
+  purple: (
+    light: #5d2675,
+    light-dark: #351e59,
+    base: #392c70,
+    mid-dark: #1e1849
+  ),
+  green: (
+    light: #7ed321,
+    base: #80c32a,
+  ),
+  red: (
+    base: #ce000e
   )
 );
 

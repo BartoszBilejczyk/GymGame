@@ -4,7 +4,6 @@ import App from '@/App'
 import Dashboard from '@/components/Dashboard'
 import Add from '@/components/Add'
 import Standings from '@/components/Standings'
-import History from '@/components/History'
 import Budget from '@/components/Budget'
 import AdditionalFeatures from '@/components/AdditionalFeatures'
 import Auth from '@/components/Auth'
@@ -27,11 +26,6 @@ export default new Router({
       path: '/standings',
       name: 'Standings',
       component: Standings
-    },
-    {
-      path: '/history',
-      name: 'History',
-      component: History
     },
     {
       path: '/budget',

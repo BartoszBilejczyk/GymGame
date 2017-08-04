@@ -1,13 +1,14 @@
 <template lang="html">
-  <div class="game-main-data-recipes__item">
-    Recipe
+  <div class="">
+    test
   </div>
 </template>
 
 <script>
 export default {
+  props: ['activeUser']
 }
 </script>
 
-<style lang="css">
+<style lang="scss">
 </style>

@@ -1,5 +1,4 @@
 <template lang="html">
-
   <div class="game-authentication-wrapper">
     <div class="game-authentication">
       <div class="game-authentication__logo-wrapper">
@@ -87,7 +86,7 @@ export default {
   },
   methods: {
     signUp() {
-      firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+      auth.createUserWithEmailAndPassword(this.email, this.password)
         .then((result) => {
           this.$store.dispatch('logUser', result)
         })
@@ -97,7 +96,7 @@ export default {
         });
     },
     signIn() {
-      firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+      auth.signInWithEmailAndPassword(this.email, this.password)
         .then((result) => {
           this.$store.dispatch('logUser', result)
         })
@@ -108,13 +107,13 @@ export default {
     },
     signInWithGoogle() {
       const provider = new firebase.auth.GoogleAuthProvider()
-      firebase.auth().signInWithRedirect(provider).then((result) => {
+      auth.signInWithRedirect(provider).then((result) => {
         this.user = result.user
       })
       .catch(err => console.log(error))
     },
     signOut() {
-      firebase.auth().signOut()
+      auth.signOut()
       this.$router.push('/')
       // .then(() => {
       //   this.user = null
@@ -220,7 +219,7 @@ export default {
     top: 5px;
   }
   &:after {
-    background-color: pal(orange, dark);
+    background-color: pal(pink, dark);
     top: 5px;
     height: 1px;
   }
@@ -232,7 +231,7 @@ export default {
 }
 
 .input-group.input-group--focused .input-group__input .icon {
-  color: pal(orange, dark)
+  color: pal(pink, dark)
 }
 
 </style>
