@@ -68,12 +68,12 @@ export default {
 
 .router-link-exact-active {
   li {
-    border-right: 2px solid pal(orange, dark);
+    border-right: 2px solid pal(pink, dark);
   }
 
   i {
     transition: 0.4s;
-    color: pal(orange, dark) !important;
+    color: pal(pink, dark) !important;
   }
 }
   //
