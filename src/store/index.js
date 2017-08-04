@@ -8,7 +8,7 @@ export default new Vuex.Store({
     navigation: [
       { icon: 'dashboard', text: 'Dashboard', to: '/'},
       { icon: 'poll', text: 'Activity', to: '/standings'},
-      { icon: 'history', text: 'Leaderboard', to: '/history'},
+      { icon: 'history', text: 'Leaderboard', to: '/profile'},
       { icon: 'attach_money', text: 'Achievements', to: '/budget'},
       { icon: 'star_border', text: 'Recipes', to: '/additional-features'}
     ],

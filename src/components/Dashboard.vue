@@ -1,27 +1,27 @@
 <template lang="html">
   <v-container class="game-dashboard">
     <v-layout row wrap>
-      <v-flex xs4>
+      <v-flex xs12 sm6 lg3>
         <v-card class="game-dashboard__card" height="40vh">
           <profile :activeUser="activeUser"/>
         </v-card>
       </v-flex>
-      <v-flex xs4>
+      <v-flex xs12 sm6 lg3>
         <v-card class="game-dashboard__card" height="40vh">
           <points :activeUser="activeUser"/>
         </v-card>
       </v-flex>
-      <v-flex xs4>
+      <v-flex xs12 lg6>
         <v-card class="game-dashboard__card" height="40vh">
           <achievements :activeUser="activeUser"/>
         </v-card>
       </v-flex>
-      <v-flex xs7>
+      <v-flex xs12 lg7>
         <v-card class="game-dashboard__card" height="40vh">
           <activity :activeUser="activeUser"/>
         </v-card>
       </v-flex>
-      <v-flex xs5>
+      <v-flex xs12 lg5>
         <v-card class="game-dashboard__card" height="40vh">
           <recipes :activeUser="activeUser"/>
         </v-card>

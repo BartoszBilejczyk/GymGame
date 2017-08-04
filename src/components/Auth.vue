@@ -219,7 +219,7 @@ export default {
     top: 5px;
   }
   &:after {
-    background-color: pal(pink, dark);
+    background-color: pal(blue, x-light);
     top: 5px;
     height: 1px;
   }
@@ -231,7 +231,7 @@ export default {
 }
 
 .input-group.input-group--focused .input-group__input .icon {
-  color: pal(pink, dark)
+  color: pal(blue, x-light)
 }
 
 </style>
