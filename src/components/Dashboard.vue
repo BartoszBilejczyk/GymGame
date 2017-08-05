@@ -16,13 +16,13 @@
           <achievements :activeUser="activeUser"/>
         </v-card>
       </v-flex>
-      <v-flex xs12 lg6>
-        <v-card class="game-dashboard__card" height="40vh">
+      <v-flex xs12 lg4>
+        <v-card class="game-dashboard__card" height="43vh">
           <activity :activeUser="activeUser"/>
         </v-card>
       </v-flex>
-      <v-flex xs12 lg6>
-        <v-card class="game-dashboard__card" height="40vh">
+      <v-flex xs12 lg8>
+        <v-card class="game-dashboard__card" height="43vh">
           <recipes :activeUser="activeUser"/>
         </v-card>
       </v-flex>

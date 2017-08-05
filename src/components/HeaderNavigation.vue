@@ -13,7 +13,7 @@
           <span>Log Out</span>
           <v-icon class="game-header-navigation-main-logout"
                   large
-                  @click="signOut()">pause</v-icon>
+                  @click="signOut()">power_settings_new</v-icon>
         </v-layout>
       </div>
     </v-layout>
@@ -54,14 +54,14 @@ export default {
     background: white;
     border-bottom: 1px solid #ddd;
     @include font(13, 300);
-    height: 120px;
+    height: 80px;
     padding-right: 3%;
   }
 
   &__logo {
-    width: 120px;
-    height: 120px;
-    padding: 30px;
+    width: 80px;
+    height: 80px;
+    padding: 10px;
   }
 
   &-main {
@@ -74,8 +74,8 @@ export default {
 
     &-user {
       &__photo {
-        height: 60px;
-        width: 60px;
+        height: 50px;
+        width: 50px;
         border-radius: 30px;
         margin-left: 20px;
       }

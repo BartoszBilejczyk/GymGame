@@ -21,7 +21,6 @@
           <span class="game-profile-info__item__copy">Activity Logs</span>
         </v-flex>
       </v-layout>
-      <v-divider></v-divider>
     </v-layout>
   </v-container>
 </template>
@@ -44,7 +43,7 @@ export default {
   }
 
   &__name {
-    @include font(24, 600);
+    @include font(22, 600);
     margin-bottom: 20px;
   }
 
@@ -59,7 +58,7 @@ export default {
       justify-content: center;
 
       &__heading {
-        @include font(26, 500);
+        @include font(22, 500);
       }
 
       &__copy {
@@ -67,11 +66,6 @@ export default {
         color: pal(gray);
         text-align: center;
       }
-    }
-
-    :nth-child(2) {
-      border-left: 1px solid pal(white, mid-dark);
-      border-right: 1px solid pal(white, mid-dark);
     }
   }
 }

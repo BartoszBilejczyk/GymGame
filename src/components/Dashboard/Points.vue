@@ -1,6 +1,6 @@
 <template lang="html">
   <v-container>
-    <line-chart></line-chart>
+    <line-chart class="chart"></line-chart>
   </v-container>
 </template>
 
