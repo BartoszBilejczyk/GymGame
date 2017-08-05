@@ -1,12 +1,21 @@
 <template lang="html">
-  <div class="">
-    test
-  </div>
+  <v-container>
+    <line-chart></line-chart>
+  </v-container>
 </template>
 
 <script>
+import LineChart from '../../charts/chart1'
+
 export default {
-  props: ['activeUser']
+  props: ['activeUser'],
+  components: {
+    LineChart
+  },
+  data () {
+    return {
+    }
+  }
 }
 </script>
 
