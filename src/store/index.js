@@ -7,10 +7,10 @@ export default new Vuex.Store({
     loggedUser: null,
     navigation: [
       { icon: 'dashboard', text: 'Dashboard', to: '/'},
-      { icon: 'poll', text: 'Activity', to: '/standings'},
-      { icon: 'history', text: 'Leaderboard', to: '/profile'},
-      { icon: 'attach_money', text: 'Achievements', to: '/budget'},
-      { icon: 'star_border', text: 'Recipes', to: '/additional-features'}
+      { icon: 'trending_up', text: 'Leaderboard', to: '/leaderboard'},
+      { icon: 'poll', text: 'Activity', to: '/activity'},
+      { icon: 'grade', text: 'Achievements', to: '/achievements'},
+      { icon: 'restaurant', text: 'Recipes', to: '/recipes'}
     ],
     activitiesOptions: [
       { text: 'Siłownia', points: 15},
@@ -57,18 +57,18 @@ export default new Vuex.Store({
       },
     ],
     badges: [
-      { name: 'crown', url: '../../assets/images/crown.svg' },
-      { name: 'gold-medal', url: '../../assets/images/gold-medal.svg' },
-      { name: 'silver-medal', url: '../../assets/images/silver-medal.svg' },
-      { name: 'bronze-medal', url: '../../assets/images/bronze-medal.svg' },
-      { name: 'shield', url: '../../assets/images/shield.svg' },
-      { name: 'light-bulb', url: '../../assets/images/light-bulb.svg' },
-      { name: 'rating1', url: '../../assets/images/rating1.svg' },
-      { name: 'rating2', url: '../../assets/images/rating2.svg' },
-      { name: 'rating3', url: '../../assets/images/rating3.svg' },
-      { name: 'rating4', url: '../../assets/images/rating4.svg' },
-      { name: 'rating5', url: '../../assets/images/rating5.svg' },
-      { name: 'new', url: '../../assets/images/new.svg' }
+      { name: 'crown', description: '' },
+      { name: 'gold-medal', description: '' },
+      { name: 'silver-medal', description: '' },
+      { name: 'bronze-medal', description: '' },
+      { name: 'shield', description: '' },
+      { name: 'light-bulb', description: '' },
+      { name: 'rating1', description: '' },
+      { name: 'rating2', description: '' },
+      { name: 'rating3', description: '' },
+      { name: 'rating4', description: '' },
+      { name: 'rating5', description: '' },
+      { name: 'new', description: '' }
     ]
   },
   mutations: {

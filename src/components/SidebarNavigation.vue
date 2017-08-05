@@ -55,12 +55,13 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 50px 0;
+      margin: 35px 0;
       padding: 0 10px;
-      @include font(12, 300);
+      @include font(10, 400);
 
       &__icon {
         @include font(26);
+        margin-bottom: 5px;
       }
     }
   }

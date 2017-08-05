@@ -42,6 +42,8 @@ $green: #B0E8E2;
 $orange: #EB8B6E;
 
 .gym-activity-history {
+  width: 100%;
+
   &-list {
     padding: 10px 30px 10px 36px;
     margin: 0;

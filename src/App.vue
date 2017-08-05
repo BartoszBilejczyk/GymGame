@@ -65,6 +65,10 @@ export default {
   }
 }
 
+.btn {
+  border-radius: 20px;
+}
+
   //
   // .list--dense .list__tile:not(.list__tile--avatar) {
   //   height: 60px;
