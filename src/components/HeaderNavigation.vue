@@ -2,7 +2,7 @@
   <div class="game-header-navigation-wrapper">
     <v-layout align-center justify-space-between
               class="game-header-navigation">
-      <img class="game-header-navigation__logo" src="../assets/logo.jpg" alt="GymGame logo">
+      <img class="game-header-navigation__logo" src="../assets/images/logo.jpg" alt="GymGame logo">
       <div class="game-header-navigation-main">
         <v-btn primary>Add activity</v-btn>
         <v-layout align-center class="game-header-navigation-main-user">

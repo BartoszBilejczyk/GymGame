@@ -12,10 +12,6 @@ export default new Vuex.Store({
       { icon: 'attach_money', text: 'Achievements', to: '/budget'},
       { icon: 'star_border', text: 'Recipes', to: '/additional-features'}
     ],
-    users: [
-      { index: 1, text: 'Bartek', photo: 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/male-64.png' },
-      { index: 2, text: 'Paula', photo: 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-64.png' },
-    ],
     activitiesOptions: [
       { text: 'Siłownia', points: 15},
       { text: 'Ładne jedzenie cały dzień', points: 15},
@@ -59,6 +55,20 @@ export default new Vuex.Store({
       { text: 'Data',
         value: 'date'
       },
+    ],
+    badges: [
+      { name: 'crown', url: '../../assets/images/crown.svg' },
+      { name: 'gold-medal', url: '../../assets/images/gold-medal.svg' },
+      { name: 'silver-medal', url: '../../assets/images/silver-medal.svg' },
+      { name: 'bronze-medal', url: '../../assets/images/bronze-medal.svg' },
+      { name: 'shield', url: '../../assets/images/shield.svg' },
+      { name: 'light-bulb', url: '../../assets/images/light-bulb.svg' },
+      { name: 'rating1', url: '../../assets/images/rating1.svg' },
+      { name: 'rating2', url: '../../assets/images/rating2.svg' },
+      { name: 'rating3', url: '../../assets/images/rating3.svg' },
+      { name: 'rating4', url: '../../assets/images/rating4.svg' },
+      { name: 'rating5', url: '../../assets/images/rating5.svg' },
+      { name: 'new', url: '../../assets/images/new.svg' }
     ]
   },
   mutations: {
