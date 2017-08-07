@@ -7,14 +7,10 @@ export default new Vuex.Store({
     loggedUser: null,
     navigation: [
       { icon: 'dashboard', text: 'Dashboard', to: '/'},
-      { icon: 'poll', text: 'Activity', to: '/standings'},
-      { icon: 'history', text: 'Leaderboard', to: '/history'},
-      { icon: 'attach_money', text: 'Achievements', to: '/budget'},
-      { icon: 'star_border', text: 'Recipes', to: '/additional-features'}
-    ],
-    users: [
-      { index: 1, text: 'Bartek', photo: 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/male-64.png' },
-      { index: 2, text: 'Paula', photo: 'https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-64.png' },
+      { icon: 'trending_up', text: 'Leaderboard', to: '/leaderboard'},
+      { icon: 'poll', text: 'Activity', to: '/activity'},
+      { icon: 'grade', text: 'Achievements', to: '/achievements'},
+      { icon: 'restaurant', text: 'Recipes', to: '/recipes'}
     ],
     activitiesOptions: [
       { text: 'Siłownia', points: 15},
@@ -59,6 +55,20 @@ export default new Vuex.Store({
       { text: 'Data',
         value: 'date'
       },
+    ],
+    badges: [
+      { name: 'crown', description: '' },
+      { name: 'gold-medal', description: '' },
+      { name: 'silver-medal', description: '' },
+      { name: 'bronze-medal', description: '' },
+      { name: 'shield', description: '' },
+      { name: 'light-bulb', description: '' },
+      { name: 'rating1', description: '' },
+      { name: 'rating2', description: '' },
+      { name: 'rating3', description: '' },
+      { name: 'rating4', description: '' },
+      { name: 'rating5', description: '' },
+      { name: 'new', description: '' }
     ]
   },
   mutations: {

@@ -2,10 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import App from '@/App'
 import Dashboard from '@/components/Dashboard'
-import Add from '@/components/Add'
-import Standings from '@/components/Standings'
-import Budget from '@/components/Budget'
-import AdditionalFeatures from '@/components/AdditionalFeatures'
+import Leaderboard from '@/components/Dashboard/Points'
+import Activity from '@/components/Dashboard/Activity'
+import Achievements from '@/components/Dashboard/Achievements'
+import Recipes from '@/components/Dashboard/Recipes'
 import Auth from '@/components/Auth'
 
 Vue.use(Router)
@@ -18,24 +18,24 @@ export default new Router({
       component: Dashboard
     },
     {
-      path: '/add',
-      name: 'Add',
-      component: Add
+      path: '/leaderboard',
+      name: 'Leaderboard',
+      component: Leaderboard
     },
     {
-      path: '/standings',
-      name: 'Standings',
-      component: Standings
+      path: '/achievements',
+      name: 'Achievements',
+      component: Achievements
     },
     {
-      path: '/budget',
-      name: 'Budget',
-      component: Budget
+      path: '/activity',
+      name: 'Activity',
+      component: Activity
     },
     {
-      path: '/additional-features',
-      name: 'AdditionalFeatures',
-      component: AdditionalFeatures
+      path: '/recipes',
+      name: 'Recipes',
+      component: Recipes
     }
   ]
 })

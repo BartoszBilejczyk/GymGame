@@ -21,7 +21,16 @@ export const firebaseApp = Firebase.initializeApp({
 
 const auth = firebaseApp.auth()
 const db = firebaseApp.database();
+const usersRef = firebaseApp.database().ref('users');
+const activitiesRef = firebaseApp.database().ref('activities');
+const badgesRef = firebaseApp.database().ref('badges');
+const recipesRef = firebaseApp.database().ref('recipes');
+
 export {
   auth,
-  db
+  db,
+  usersRef,
+  activityRef,
+  badgesRef,
+  activitiesRef
 }

@@ -2,9 +2,9 @@
   <div class="game-header-navigation-wrapper">
     <v-layout align-center justify-space-between
               class="game-header-navigation">
-      <img class="game-header-navigation__logo" src="../assets/logo.jpg" alt="GymGame logo">
+      <img class="game-header-navigation__logo" src="../assets/images/logo.jpg" alt="GymGame logo">
       <div class="game-header-navigation-main">
-        <v-btn primary>Add activity</v-btn>
+        <add />
         <v-layout align-center class="game-header-navigation-main-user">
           <span>Hi, <span class="game-header-navigation-main-user__name">{{ firstName }}</span></span>
           <img class="game-header-navigation-main-user__photo" :src="activeUser.photoURL" alt="">
@@ -13,7 +13,7 @@
           <span>Log Out</span>
           <v-icon class="game-header-navigation-main-logout"
                   large
-                  @click="signOut()">pause</v-icon>
+                  @click="signOut()">power_settings_new</v-icon>
         </v-layout>
       </div>
     </v-layout>
@@ -22,13 +22,18 @@
 
 <script>
 import firebase from 'firebase'
+import Add from './Add'
 
 export default {
   name: 'HeaderNavigation',
   props: ['activeUser'],
+  components: {
+    Add
+  },
   computed: {
     firstName() {
-      return this.activeUser.displayName.split(' ')[0]
+      // return this.activeUser.displayName.split(' ')[0]
+      return 'Userze'
     }
   },
   methods: {
@@ -54,14 +59,14 @@ export default {
     background: white;
     border-bottom: 1px solid #ddd;
     @include font(13, 300);
-    height: 120px;
+    height: 80px;
     padding-right: 3%;
   }
 
   &__logo {
-    width: 120px;
-    height: 120px;
-    padding: 30px;
+    width: 80px;
+    height: 80px;
+    padding: 10px;
   }
 
   &-main {
@@ -74,8 +79,8 @@ export default {
 
     &-user {
       &__photo {
-        height: 60px;
-        width: 60px;
+        height: 50px;
+        width: 50px;
         border-radius: 30px;
         margin-left: 20px;
       }

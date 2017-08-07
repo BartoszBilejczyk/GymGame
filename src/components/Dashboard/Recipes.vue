@@ -1,12 +1,25 @@
 <template lang="html">
-  <div class="">
-    test
-  </div>
+  <v-container>
+    <v-layout row>
+      <v-flex xs4 v-for="i in 3" :key="i">
+        <recipe />
+      </v-flex>
+    </v-layout>
+    <more-button :path="'recipes'"/>
+  </v-container>
 </template>
 
 <script>
+import Recipe from './Recipe'
+import MoreButton from './Helpers/MoreButton'
+
 export default {
-  props: ['activeUser']
+  name: 'Recipes',
+  props: ['activeUser'],
+  components: {
+    Recipe,
+    MoreButton
+  }
 }
 </script>
 

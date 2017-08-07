@@ -2,8 +2,8 @@
   <div class="game-authentication-wrapper">
     <div class="game-authentication">
       <div class="game-authentication__logo-wrapper">
-        <img class="game-authentication__logo" src="../assets/dumbbell.svg" alt="dumbbell">
-        <img class="game-authentication__logo" src="../assets/fresh-juice.svg" alt="juice">
+        <img class="game-authentication__logo" src="../assets/images/dumbbell.svg" alt="dumbbell">
+        <img class="game-authentication__logo" src="../assets/images/fresh-juice.svg" alt="juice">
       </div>
       <h1 class="game-authentication__title white--text">GYM GAME</h1>
       <div class="game-authentication-textfields">
@@ -17,6 +17,7 @@
         ></v-text-field>
         <v-text-field
           name="input-1-3"
+          type="password"
           label="Password"
           single-line
           prepend-icon="lock_outline"
@@ -39,13 +40,13 @@
           <v-card @click="signInWithGoogle()"
                   class="game-authentication-social__item">
             <img class="game-authentication-social__icon"
-                 src="../assets/google.svg"
+                 src="../assets/images/google.svg"
                  alt="Google">
                  Sign in with Google
           </v-card>
           <v-card class="game-authentication-social__item">
             <img class="game-authentication-social__icon"
-                 src="../assets/facebook.svg"
+                 src="../assets/images/facebook.svg"
                  alt="Facebook">
                  Log in with Facebook
           </v-card>
@@ -219,7 +220,7 @@ export default {
     top: 5px;
   }
   &:after {
-    background-color: pal(pink, dark);
+    background-color: pal(blue, x-light);
     top: 5px;
     height: 1px;
   }
@@ -231,7 +232,7 @@ export default {
 }
 
 .input-group.input-group--focused .input-group__input .icon {
-  color: pal(pink, dark)
+  color: pal(blue, x-light)
 }
 
 </style>

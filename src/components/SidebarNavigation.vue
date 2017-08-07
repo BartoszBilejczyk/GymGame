@@ -40,7 +40,7 @@ export default {
 .game-sidebar-navigation {
   width: 140px;
   background: white;
-  height: calc(100vh - 120px);
+  height: calc(100vh - 80px);
 
   &-list {
     padding: 0;
@@ -55,12 +55,13 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 50px 0;
+      margin: 35px 0;
       padding: 0 10px;
-      @include font(12, 300);
+      @include font(10, 400);
 
       &__icon {
-        @include font(32);
+        @include font(26);
+        margin-bottom: 5px;
       }
     }
   }
