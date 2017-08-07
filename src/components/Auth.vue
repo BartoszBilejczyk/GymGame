@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import {auth} from '../firebase'
+import {auth, db} from '../firebase'
 import firebase from 'firebase'
 
 export default {
@@ -85,11 +85,15 @@ export default {
       this.loading = false
     })
   },
+  firebase: {
+    users: db.ref('users')
+  },
   methods: {
     signUp() {
       auth.createUserWithEmailAndPassword(this.email, this.password)
         .then((result) => {
           this.$store.dispatch('logUser', result)
+          this.$firebaseRefs.users.push({uid: result.uid, providerData: result.providerData});
         })
         .catch(function(error) {
           console.log(error.code);

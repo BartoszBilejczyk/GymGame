@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import {db, activitiesRef} from '../../firebase'
+import {db} from '../../firebase'
 import firebase from 'firebase'
 import moment from 'moment'
 import ActivityItem from './ActivityItem'
@@ -25,35 +25,15 @@ export default {
     ActivityItem,
     MoreButton
   },
-  data() {
-    return {
-      user: ''
-    }
-  },
-  computed: {
-    recent() {
-      return 'activities'
-    },
-    currentUID() {
-      return this.activeUser.uid
-    }
-  },
   firebase: {
     activities: db.ref('activities')
   },
   beforeCreate: function() {
-
-    // Setup Firebase onAuthStateChanged handler
-    //
-    // https://firebase.google.com/docs/reference/js/firebase.auth.Auth
-    // https://firebase.google.com/docs/reference/js/firebase.auth.Auth#onAuthStateChanged
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         this.user = user
-        // https://github.com/vuejs/vuefire/blob/master/src/vuefire.js#L169
         this.$bindAsArray('activities', db.ref('activities/' + user.uid))
       } else {
-        // https://firebase.google.com/docs/reference/js/firebase.auth.Auth#signInAnonymously
         firebase.auth().signInAnonymously().catch(console.error)
       }
     }.bind(this))

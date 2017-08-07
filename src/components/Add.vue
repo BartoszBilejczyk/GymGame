@@ -95,13 +95,7 @@ export default {
     }
   },
   firebase: {
-    activities: {
-      source: db.ref('activities'),
-      // handle errors in console
-      cancelCallback(err) {
-        console.error(err)
-      }
-    },
+    activities: db.ref('activities'),
     budget: {
       source: db.ref('budget'),
       // handle errors in console
@@ -113,7 +107,7 @@ export default {
   methods: {
     addActivity() {
       if (this.selectedUser && this.selectedActivity) {
-        this.$firebaseRefs.activities.child(this.user.uid).push({username: this.selectedUser, activity: this.selectedActivity, timestamp: moment().format(), points: this.selectedPoints, budgetInflow: this.budgetInflow});
+        this.$firebaseRefs.activities.push({username: this.selectedUser, activity: this.selectedActivity, timestamp: moment().format(), points: this.selectedPoints, budgetInflow: this.budgetInflow});
         if (this.budgetInflow > 0) {
           this.$firebaseRefs.budget.child('total').set(Number((this.budget[2]['.value'] + this.budgetInflow).toFixed(2)))
           if (this.selectedUser === 'Paula') {
@@ -140,7 +134,17 @@ export default {
       setTimeout(() => (this[l] = false), 1000)
       this.loader = null
     }
-  }
+  },
+  beforeCreate: function() {
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        this.user = user
+        this.$bindAsArray('activities', db.ref('activities/' + user.uid))
+      } else {
+        firebase.auth().signInAnonymously().catch(console.error)
+      }
+    }.bind(this))
+  },
 }
 </script>
 
