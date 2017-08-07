@@ -5,19 +5,20 @@
         <recipe />
       </v-flex>
     </v-layout>
-    <v-layout row justify-center>
-      <v-btn>Zobacz pozostałe</v-btn>
-    </v-layout>
+    <more-button :path="'recipes'"/>
   </v-container>
 </template>
 
 <script>
 import Recipe from './Recipe'
+import MoreButton from './Helpers/MoreButton'
+
 export default {
   name: 'Recipes',
   props: ['activeUser'],
   components: {
-    Recipe
+    Recipe,
+    MoreButton
   }
 }
 </script>

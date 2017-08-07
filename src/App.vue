@@ -5,7 +5,6 @@
       id="e3"
       standalone
     >
-
       <div v-if="user">
         <header-navigation :activeUser="user"/>
         <main v-cloak class="game-main-wrapper">
@@ -67,6 +66,7 @@ export default {
 
 .btn {
   border-radius: 20px;
+  box-shadow: 0 4px 20px 0 rgba(69, 69, 86, 0.12);
 }
 
   //

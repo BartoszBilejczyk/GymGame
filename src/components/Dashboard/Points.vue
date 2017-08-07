@@ -1,19 +1,25 @@
 <template lang="html">
-  <v-container>
-    <line-chart class="chart"></line-chart>
-  </v-container>
+  <div class="" style="position: relative; width: 100%;">
+    <div style="width: 100%; height: 38vh">
+      <line-chart class="chart" :path="'path'" :activeUser="activeUser"></line-chart>
+    </div>
+    <more-button style="position: absolute; top: 0; right: 20px" :path="'leaderboard'"/>
+  </div>
 </template>
 
 <script>
 import LineChart from '../../charts/chart1'
+import MoreButton from './Helpers/MoreButton'
 
 export default {
   props: ['activeUser'],
   components: {
-    LineChart
+    LineChart,
+    MoreButton
   },
-  data () {
-    return {
+  computed: {
+    path() {
+      return 'path'
     }
   }
 }

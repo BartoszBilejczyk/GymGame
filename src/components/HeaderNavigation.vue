@@ -4,7 +4,7 @@
               class="game-header-navigation">
       <img class="game-header-navigation__logo" src="../assets/images/logo.jpg" alt="GymGame logo">
       <div class="game-header-navigation-main">
-        <v-btn primary>Add activity</v-btn>
+        <add />
         <v-layout align-center class="game-header-navigation-main-user">
           <span>Hi, <span class="game-header-navigation-main-user__name">{{ firstName }}</span></span>
           <img class="game-header-navigation-main-user__photo" :src="activeUser.photoURL" alt="">
@@ -22,13 +22,18 @@
 
 <script>
 import firebase from 'firebase'
+import Add from './Add'
 
 export default {
   name: 'HeaderNavigation',
   props: ['activeUser'],
+  components: {
+    Add
+  },
   computed: {
     firstName() {
-      return this.activeUser.displayName.split(' ')[0]
+      // return this.activeUser.displayName.split(' ')[0]
+      return 'Userze'
     }
   },
   methods: {

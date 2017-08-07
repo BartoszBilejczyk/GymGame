@@ -22,12 +22,18 @@
         </v-flex>
       </v-layout>
     </v-layout>
+    <more-button :activeUser="activeUser" :path="'profile'"/>
   </v-container>
 </template>
 
 <script>
+import MoreButton from './Helpers/MoreButton'
+
 export default {
-  props: ['activeUser']
+  props: ['activeUser'],
+  components: {
+    MoreButton
+  }
 }
 </script>
 
@@ -37,13 +43,13 @@ export default {
 .game-profile {
 
   &__photo {
-    width: 150px;
+    width: 130px;
     border-radius: 100px;
-    margin: 20px 0;
+    margin: 12px 0;
   }
 
   &__name {
-    @include font(22, 600);
+    @include font(18, 600);
     margin-bottom: 20px;
   }
 
@@ -51,7 +57,7 @@ export default {
     width: 100%;
 
     &__item {
-      height: 120px;
+      padding: 10px 0;
       display: flex;
       flex-direction: column;
       align-items: center;
