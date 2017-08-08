@@ -1,8 +1,8 @@
 <template lang="html">
   <v-container>
     <v-layout row>
-      <v-flex xs4 v-for="i in 3" :key="i">
-        <recipe />
+      <v-flex xs4 v-for="(i, index) in 3" :key="i">
+        <recipe :recipes="recipes" :index="index" />
       </v-flex>
     </v-layout>
     <more-button :path="'recipes'"/>
@@ -26,7 +26,13 @@ export default {
   },
   methods: {
     addRecipe() {
-      this.$firebaseRefs.recipes.push({ name: 'Pizza z chorizo', url: 'obrazek' });
+      this.$firebaseRefs.recipes.push({
+        image: 'http://cupcakefactory.pl/wp-content/uploads/2013/07/DSCF5758.jpg',
+        name: 'Super tarta owocowa',
+        ingredients: ['ingredient', 'ingredient'],
+        description: ['descriptionItem', 'descriptionItem'],
+        calories: [350, 10, 25, 17]
+      });
     }
   },
   firebase: {

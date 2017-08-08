@@ -1,7 +1,11 @@
 <template lang="html">
   <v-container>
-    <badge v-for="badge in badges" :badge="badge" :key="badge.info"></badge>
+    <component-name :componentName="this.$options.name" />
     <more-button :path="'achievements'"/>
+
+    <v-layout row justify-space-around class="game-achievements">
+      <badge v-for="badge in badges" :badge="badge" :key="badge.info"></badge>
+    </v-layout>
     <v-btn @click="addBadge()">Add badge</v-btn>
   </v-container>
 </template>
@@ -11,12 +15,15 @@ import {db} from '../../firebase'
 import firebase from 'firebase'
 import Badge from './Badge'
 import MoreButton from './Helpers/MoreButton'
+import ComponentName from './Helpers/ComponentName'
 
 export default {
+  name: 'Achievements',
   props: ['activeUser'],
   components: {
     Badge,
-    MoreButton
+    MoreButton,
+    ComponentName
   },
   computed: {
     badges() {
@@ -45,5 +52,10 @@ export default {
 </script>
 
 <style lang="scss">
+
+.game-achievements {
+  display: flex;
+  flex-wrap: wrap;
+}
 
 </style>

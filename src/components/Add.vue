@@ -8,12 +8,6 @@
         </v-card-title>
         <v-card-text>
           <v-select
-            :items="users"
-            v-model="selectedUser"
-            label="Wybierz osobę"
-            item-value="text"
-          ></v-select>
-          <v-select
             :items="activitiesOptions"
             v-model="selectedActivity"
             label="Wybierz aktywność"
@@ -42,7 +36,7 @@
     </v-dialog>
     <v-snackbar
       :timeout="timeout"
-      :bottom="y"
+      :top="true"
       v-model="snackbar"
     >
       {{ snackbarText }}
@@ -63,20 +57,15 @@ export default {
     return {
       dialog: false,
       selectedActivity: null,
-      selectedUser: null,
       loader: null,
       loading4: false,
       snackbar: false,
-      y: 'bottom',
       timeout: 2000,
       snackbarText: 'Dodano aktywność',
       user: firebase.auth().currentUser
     }
   },
   computed: {
-    users() {
-      return ['bartek', 'paula']
-    },
     activitiesOptions() {
       return this.$store.state.activitiesOptions
     },
@@ -106,18 +95,9 @@ export default {
   },
   methods: {
     addActivity() {
-      if (this.selectedUser && this.selectedActivity) {
-        this.$firebaseRefs.activities.push({username: this.selectedUser, activity: this.selectedActivity, timestamp: moment().format(), points: this.selectedPoints, budgetInflow: this.budgetInflow});
-        if (this.budgetInflow > 0) {
-          this.$firebaseRefs.budget.child('total').set(Number((this.budget[2]['.value'] + this.budgetInflow).toFixed(2)))
-          if (this.selectedUser === 'Paula') {
-            this.$firebaseRefs.budget.child('paulaTotal').set(Number((this.budget[1]['.value'] + this.budgetInflow).toFixed(2)))
-          } else {
-            this.$firebaseRefs.budget.child('bartekTotal').set(Number((this.budget[0]['.value'] + this.budgetInflow).toFixed(2)))
-          }
-        }
+      if (this.selectedActivity) {
+        this.$firebaseRefs.activities.push({activity: this.selectedActivity, timestamp: moment().format(), points: this.selectedPoints, budgetInflow: this.budgetInflow});
         this.selectedActivity = null
-        this.selectedUser = null
         this.loader = 'loading4'
         setTimeout(() => {
           this.snackbar= true

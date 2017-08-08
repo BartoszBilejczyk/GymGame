@@ -1,5 +1,8 @@
 <template lang="html">
   <div class="gym-activity-history">
+    <component-name :componentName="this.$options.name" />
+    <more-button :path="'activity'"/>
+
     <ul class="gym-activity-history-list">
       <activity-item v-for="(activity, index) in activities"
                      :key="index"
@@ -8,7 +11,6 @@
                      :index="index"
       />
     </ul>
-    <more-button :path="'activity'"/>
   </div>
 </template>
 
@@ -18,12 +20,15 @@ import firebase from 'firebase'
 import moment from 'moment'
 import ActivityItem from './ActivityItem'
 import MoreButton from './Helpers/MoreButton'
+import ComponentName from './Helpers/ComponentName'
 
 export default {
+  name: 'Activity',
   props: ['activeUser'],
   components: {
     ActivityItem,
-    MoreButton
+    MoreButton,
+    ComponentName
   },
   firebase: {
     activities: db.ref('activities')

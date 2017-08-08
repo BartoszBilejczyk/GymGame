@@ -1,21 +1,26 @@
 <template lang="html">
-  <div class="" style="position: relative; width: 100%;">
-    <div style="width: 100%; height: 38vh">
+  <div class="game-dashboard__card-points">
+    <component-name :componentName="this.$options.name" />
+    <more-button :path="'leaderboard'"/>
+
+    <div class="game-dashboard__card-chart-wrapper">
       <line-chart class="chart" :path="'path'" :activeUser="activeUser"></line-chart>
     </div>
-    <more-button style="position: absolute; top: 0; right: 20px" :path="'leaderboard'"/>
   </div>
 </template>
 
 <script>
 import LineChart from '../../charts/chart1'
 import MoreButton from './Helpers/MoreButton'
+import ComponentName from './Helpers/ComponentName'
 
 export default {
+  name: 'Points',
   props: ['activeUser'],
   components: {
     LineChart,
-    MoreButton
+    MoreButton,
+    ComponentName
   },
   computed: {
     path() {
@@ -26,4 +31,21 @@ export default {
 </script>
 
 <style lang="scss">
+
+.game-dashboard__card {
+  &-points {
+    position: relative;
+    width: 100%;
+  }
+
+  &-chart-wrapper {
+    height: 40vh;
+    display: flex;
+    align-items: flex-end;
+  }
+}
+
+.chart {
+  width: 100%;
+}
 </style>

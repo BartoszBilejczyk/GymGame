@@ -6,7 +6,7 @@
         <img class="game-authentication__logo" src="../assets/images/fresh-juice.svg" alt="juice">
       </div>
       <h1 class="game-authentication__title white--text">GYM GAME</h1>
-      <div class="game-authentication-textfields">
+      <div v-if="signIn" class="game-authentication-textfields">
         <v-text-field
           name="input-1-3"
           label="Email"
@@ -26,10 +26,19 @@
         ></v-text-field>
       </div>
       <v-btn
+        v-if="isSigningIn"
         block
         @click="signIn()"
-        class="game-authentication__signin-button"
-      >{{isSigningIn ? 'sign in' : 'sign up'}}</v-btn>
+        class="game-authentication__button">
+          Sign In
+      </v-btn>
+      <v-btn
+        v-else
+        block
+        @click="signUp()"
+        class="game-authentication__button">
+          Sign Up
+      </v-btn>
 
       <div v-if="isSigningIn"
            class="game-authentication-social-wrapper
@@ -166,7 +175,7 @@ export default {
     margin-top: 40px;
   }
 
-  &__signin-button {
+  &__button {
     margin-bottom: 30px;
   }
 
